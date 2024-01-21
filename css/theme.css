@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Anonymous+Pro&family=DM+Serif+Display&family=Space+Mono:wght@700&display=swap");
+
+/**********************************************
+Root variables
+**********************************************/
+:root {
+	--clr-white-actual: hsl(0, 0%, 100%);
+	--clr-white: hsl(226, 21%, 88%);
+	--clr-black: hsl(203, 62%, 4%);
+
+	--clr-blue-dark: hsl(218, 16%, 10%);
+	--clr-blue-accent: hsl(207, 90%, 68%);
+	--clr-blue-accent-dark: hsl(209, 64%, 35%);
+	--clr-purple: hsl(230, 23%, 25%);
+	--clr-orange: hsl(28, 72%, 72%);
+	--clr-grey: hsl(210, 9%, 58%);
+
+	--ff-def: system-ui;
+	--ff-header: "DM Serif Display", serif;
+	--ff-subHeader: "Anonymous Pro", monospace;
+	--ff-menu: "Cascadia Code", monospace;
+
+	--fw-400: 400;
+
+	--body-width: 1170px;
+}
+
+/**********************************************
+CSS resets
+**********************************************/
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* Remove default margin -- Suggested by Andy Bell - https://andy-bell.co.uk/a-modern-css-reset/ */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+	margin: 0;
+}
+
+/* Set core root defaults -- Suggested by Andy Bell - https://andy-bell.co.uk/a-modern-css-reset/ */
+html:focus-within {
+	scroll-behavior: smooth;
+}
+
+html {
+	background-color: var(--clr-black);
+}
+
+body {
+	min-height: 100vh;
+	min-height: 100svh; /* Suggested by Kevin Powell - https://www.youtube.com/@KevinPowell */
+	font-family: var(--ff-def);
+	color: var(--clr-white);
+	accent-color: var(
+		--clr-orange
+	); /* Suggested by bryntum - https://bryntum.com/blog/3-ways-to-style-radio-buttons-with-modern-css/ */
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+}
+
+img,
+picture {
+	display: block;
+	max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+ul {
+	margin-block-start: 0;
+	margin-block-end: 0;
+	padding-inline-start: 0;
+}
+
+nav ul li {
+	list-style: none;
+}
+
+/**********************************************
+Sections
+**********************************************/
+body {
+	max-width: var(--body-width);
+	background-color: var(--clr-blue-dark);
+}
+
+body,
+header,
+main,
+footer {
+	width: 100%;
+	margin-inline: auto;
+}
+
+.main-container {
+	max-width: calc(100% - 2rem);
+	margin-inline: auto;
+}
