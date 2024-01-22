@@ -1,3 +1,105 @@
+/* Import fonts */
+@import url("https://fonts.googleapis.com/css2?family=Anonymous+Pro&family=DM+Serif+Display&family=Space+Mono:wght@700&display=swap");
+
+/********************************************************************************************
+Root variables
+********************************************************************************************/
+:root {
+	--clr-white-actual: hsl(0, 0%, 100%);
+	--clr-white: hsl(226, 21%, 88%);
+	--clr-black: hsl(203, 62%, 4%);
+
+	--clr-blue-dark: hsl(218, 16%, 10%);
+	--clr-blue-accent: hsl(207, 90%, 68%);
+	--clr-blue-accent-dark: hsl(209, 64%, 35%);
+	--clr-purple: hsl(230, 23%, 25%);
+	--clr-orange: hsl(28, 72%, 72%);
+	--clr-grey: hsl(210, 9%, 58%);
+
+	--ff-def: system-ui;
+	--ff-header: "DM Serif Display", serif;
+	--ff-subHeader: "Anonymous Pro", monospace;
+	--ff-menu: "Cascadia Code", monospace;
+
+	--fw-400: 400;
+
+	--body-max-width: 1170px;
+}
+
+/********************************************************************************************
+CSS resets
+********************************************************************************************/
+/* Set border-box */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* Remove default margin and padding, set element font behavior */
+* {
+	margin: 0;
+	padding: 0;
+	min-width: 0; /* Prevent strange overflows :: Suggested by Josh Comeau https://www.joshwcomeau.com/css/interactive-guide-to-flexbox/#the-minimum-size-gotcha-11 */
+	font: inherit;
+}
+
+/* Make headings wrap nicely */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	text-wrap: balance;
+}
+
+/* Better readability for long paragraphs */
+p {
+	max-width: 75ch;
+	text-wrap: pretty; /* Prevent orphans */
+	margin-bottom: 2rem; /* Was reset above */
+}
+
+html {
+	color-scheme: dark light; /* Set color theme */
+	hanging-punctuation: first last; /* Ensure prettier text lines */
+}
+
+/* Set global style and size */
+body {
+	min-height: 100vh; /* Fallback for unsupported browsers */
+	min-height: 100svh;
+	font-family: var(--ff-def);
+	color: var(--clr-white);
+	accent-color: var(--clr-orange);
+}
+
+/* Un-fruck media behavior */
+img,
+picture,
+svg,
+video {
+	display: block;
+	max-width: 100%;
+}
+
+/* Remove list styles */
+nav ul li {
+	list-style: none;
+}
+
+/* Better scroll behavior while respecting preference */
+@media (prefers-reduced-motion: no-preference) {
+	:has(:target) /* Takes in-page box-scrolling into account */ {
+		scroll-behavior: smooth;
+		scroll-padding-top: 2rem; /* Give some head room */
+	}
+}
+
+/********************************************************************************************
+Import site styles
+********************************************************************************************/
 @import url("/css/theme.css");
 @import url("/css/utilities.css");
 @import url("/css/ui.css");
