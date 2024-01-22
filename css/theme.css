@@ -1,3 +1,102 @@
+/* Import fonts */
+@import url("https://fonts.googleapis.com/css2?family=Anonymous+Pro&family=DM+Serif+Display&family=Space+Mono:wght@700&display=swap");
+
+/********************************************************************************************
+Root variables
+********************************************************************************************/
+:root {
+	--clr-white-actual: hsl(0, 0%, 100%);
+	--clr-white: hsl(226, 21%, 88%);
+	--clr-black: hsl(203, 62%, 4%);
+
+	--clr-blue-dark: hsl(218, 16%, 10%);
+	--clr-blue-accent: hsl(207, 90%, 68%);
+	--clr-blue-accent-dark: hsl(209, 64%, 35%);
+	--clr-purple: hsl(230, 23%, 25%);
+	--clr-orange: hsl(28, 72%, 72%);
+	--clr-grey: hsl(210, 9%, 58%);
+
+	--ff-def: system-ui;
+	--ff-header: "DM Serif Display", serif;
+	--ff-subHeader: "Anonymous Pro", monospace;
+	--ff-menu: "Cascadia Code", monospace;
+
+	--fw-400: 400;
+
+	--body-max-width: 1170px;
+}
+
+/********************************************************************************************
+CSS resets
+********************************************************************************************/
+/* Set border-box */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* Remove default margin and padding, set element font behavior */
+* {
+	margin: 0;
+	padding: 0;
+	min-width: 0; /* Prevent strange overflows :: Suggested by Josh Comeau https://www.joshwcomeau.com/css/interactive-guide-to-flexbox/#the-minimum-size-gotcha-11 */
+	font: inherit;
+}
+
+/* Make headings wrap nicely */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	text-wrap: balance;
+}
+
+/* Better readability for long paragraphs */
+p {
+	max-width: 75ch;
+	text-wrap: pretty; /* Prevent orphans */
+	margin-bottom: 2rem; /* Was reset above */
+}
+
+html {
+	color-scheme: dark light; /* Set color theme */
+	hanging-punctuation: first last; /* Ensure prettier text lines */
+}
+
+/* Set global style and size */
+body {
+	min-height: 100vh; /* Fallback for unsupported browsers */
+	min-height: 100svh;
+	font-family: var(--ff-def);
+	color: var(--clr-white);
+	accent-color: var(--clr-orange);
+}
+
+/* Un-fruck media behavior */
+img,
+picture,
+svg,
+video {
+	display: block;
+	max-width: 100%;
+}
+
+/* Remove list styles */
+nav ul li {
+	list-style: none;
+}
+
+/* Better scroll behavior while respecting preference */
+@media (prefers-reduced-motion: no-preference) {
+	:has(:target) /* Takes in-page box-scrolling into account */ {
+		scroll-behavior: smooth;
+		scroll-padding-top: 2rem; /* Give some head room */
+	}
+}
+
 /********************************************************************************************
 Sections
 ********************************************************************************************/
@@ -12,15 +111,52 @@ body {
 	grid-template-rows: auto 1fr auto;
 }
 
-body,
+/* body,
 header,
 main,
 footer {
 	width: 100%;
 	margin-inline: auto;
+} */
+
+/* Widths setup :: Suggested by Kevin Powell https://www.youtube.com/watch?v=c13gpBrnGEw */
+.content-grid {
+	--padding-inline: 1rem;
+	--content-max-width: 70ch;
+	--breakout-max-width: 85ch;
+
+	--breakout-size: calc(
+		(var(--breakout-max-width) - var(--content-max-width)) / 2
+	);
+
+	display: grid;
+	grid-template-columns:
+		[full-width-start] minmax(var(--padding-inline), 1fr)
+		[breakout-start] minmax(0, var(--breakout-size)) [content-start]
+		min(100% - (var(--padding-inline) * 2), var(--content-max-width))
+		[content-end] minmax(0, var(--breakout-size)) [breakout-end]
+		minmax(var(--padding-inline), 1fr) [full-width-end];
 }
 
-.main-container {
-	max-width: calc(100% - 2rem);
-	margin-inline: auto;
+.content-grid > :not(.breakout, .full-width),
+.full-width > :not(.breakout, .full-width) {
+	grid-column: content;
 }
+
+.content-grid > .breakout {
+	grid-column: breakout;
+}
+
+.content-grid > .full-width {
+	grid-column: full-width;
+
+	display: grid;
+	grid-template-columns: inherit;
+}
+
+img.full-width {
+	width: 100%;
+	max-height: 45vh;
+	object-fit: cover;
+}
+/* ^ End widths setup */

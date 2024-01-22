@@ -1,0 +1,11 @@
+.bg-purple {
+	background-color: var(--clr-purple);
+}
+
+.bg-black {
+	background-color: var(--clr-black);
+}
+
+.bg-blue-dark {
+	background-color: var(--clr-blue-accent-dark);
+}
