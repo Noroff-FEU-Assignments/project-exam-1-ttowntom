@@ -34,7 +34,47 @@
 				<div></div>
 			</div>
 			<div class="content-grid">
-				<form action=""></form>
+				<div>
+					<form id="contact-form" action="">
+						<div class="">
+							<label for="name">Name</label>
+							<input
+								type="text"
+								name="name"
+								id="name"
+								placeholder="Your name"
+								required />
+						</div>
+						<div class="">
+							<label for="email">Email</label>
+							<input
+								type="email"
+								name="email"
+								id="email"
+								placeholder="Your email"
+								required />
+						</div>
+						<div class=" span2">
+							<label for="subject">Subject</label>
+							<input
+								type="text"
+								name="subject"
+								id="subject"
+								placeholder="Subject"
+								required />
+						<div class=" span2">
+							<label for="message">Message</label>
+							<textarea
+								name="message"
+								id="message"
+								placeholder="Your message"
+								required></textarea>
+						</div>
+						<div class="">
+							<button type="submit" class="btn-accent">Send</button>
+						</div>
+					</form>
+				</div>
 				<h2>FAQs (Frequently Asked Questions)</h2>
 				<p class="bold">How quickly can I expect a response?</p>
 				<p class="faq-answer">
