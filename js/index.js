@@ -37,3 +37,23 @@ window.onpopstate = () => route(location.pathname);
 
 // Initial routing
 route(location.pathname);
+
+// Load main menu
+async function loadMenu() {
+	const response = await fetch("/components/mainMenu.html");
+	const menuHtml = await response.text();
+	document.getElementById("header").innerHTML = menuHtml;
+}
+
+// Load footer
+async function loadFooter() {
+	const response = await fetch("/components/footer.html");
+	const footerHtml = await response.text();
+	document.getElementById("footer").innerHTML = footerHtml;
+}
+
+// Render global components
+window.onload = () => {
+	loadMenu();
+	loadFooter();
+};

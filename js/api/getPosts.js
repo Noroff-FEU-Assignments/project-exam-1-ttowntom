@@ -2,9 +2,9 @@
 import { API_BASE_URL } from "./config.js";
 
 // Get all blog posts
-export async function getPosts() {
+export async function getPosts(params) {
 	try {
-		const response = await fetch(`${API_BASE_URL}/posts`);
+		const response = await fetch(`${API_BASE_URL}/posts?${params}`);
 		if (!response.ok) {
 			throw Error(response.statusText);
 		}

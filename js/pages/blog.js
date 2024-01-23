@@ -1,8 +1,9 @@
 import { getPosts } from "/js/api/index.js";
 import { getFeatureImg } from "/js/api/index.js";
 
-// Grab the blog posts wrapper
+// Grab wrappers
 const postsWrapper = document.querySelector("#posts");
+const featuredWrapper = document.querySelector("#featured");
 
 // Get all blog posts from server
 async function loadPosts() {
@@ -38,11 +39,10 @@ async function postCard(post) {
 	headerImg.classList.add("post-img");
 	try {
 		const imgData = await getFeatureImg(post.featured_media);
-		console.log(imgData.guid.rendered);
 		headerImg.src = imgData.guid.rendered;
 	} catch (error) {
 		console.error(`Error fetching feature image: ${error}`);
-		headerImg.src = ""; // Fallback image or style
+		headerImg.src = "/img/codeJourneyLogoDarkBlue.png"; // Fallback image
 	}
 
 	// Create card text wrapper
