@@ -1,4 +1,5 @@
 import { getPosts } from "/js/api/index.js";
+import { getFeatureImg } from "/js/api/index.js";
 
 // Grab the blog posts wrapper
 const postsWrapper = document.querySelector("#posts");
@@ -14,22 +15,35 @@ async function loadPosts() {
 }
 
 // Render posts to the DOM
-function renderPosts(posts) {
-	posts.forEach((post) => {
-		postsWrapper.appendChild(postCard(post));
-	});
+async function renderPosts(posts) {
+	for (const post of posts) {
+		try {
+			const card = await postCard(post);
+			postsWrapper.appendChild(card);
+		} catch (error) {
+			console.error("Error creating post card:", error);
+		}
+	}
 }
 
 // Build blog post card HTML
-function postCard(post) {
+async function postCard(post) {
 	// Create card wrapper
 	const card = document.createElement("a");
 	card.classList.add("post-card");
 	card.href = `/post.html?id=${post.id}`;
 
 	// Create card header image
-	const headerImg = document.createElement("div");
+	const headerImg = document.createElement("img");
 	headerImg.classList.add("post-img");
+	try {
+		const imgData = await getFeatureImg(post.featured_media);
+		console.log(imgData.guid.rendered);
+		headerImg.src = imgData.guid.rendered;
+	} catch (error) {
+		console.error(`Error fetching feature image: ${error}`);
+		headerImg.src = ""; // Fallback image or style
+	}
 
 	// Create card text wrapper
 	const text = document.createElement("div");

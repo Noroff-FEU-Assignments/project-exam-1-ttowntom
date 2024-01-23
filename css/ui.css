@@ -1,0 +1,49 @@
+/********************************************************************************************
+Blog posts
+********************************************************************************************/
+/* Blog posts layout */
+#posts {
+    margin-inline: 1rem;
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: repeat(
+		auto-fit,
+		minmax(calc((var(--body-max-width) / 3) - 2rem), 1fr)
+	);
+    /* align-items: start; */
+}
+
+/* Blog posts cards */
+.post-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+	background-color: var(--clr-black);
+	border-radius: 5px;
+	overflow: hidden;
+	border: 1px solid var(--clr-grey-desat);
+	border-left: 4px solid var(--clr-orange);
+	color: var(--clr-white);
+	text-decoration: none;
+}
+
+.post-card:is(:hover, :focus, :active) {
+	border: 1px solid var(--clr-grey);
+	border-left: 4px solid var(--clr-blue-accent-dark);
+}
+
+.post-img {
+    height: 15rem;
+    object-fit: cover;
+}
+
+.post-text {
+	padding: 1rem;
+    padding-bottom: 2rem;
+}
+
+.post-date {
+	font-family: var(--ff-accent);
+	color: var(--clr-grey);
+	font-size: 0.8rem;
+    margin-bottom: 0.2rem;

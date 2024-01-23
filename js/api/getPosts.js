@@ -1,10 +1,10 @@
 // WordPress base URL
-const baseUrl = "https://wp.ttowntom.com/wp-json/wp/v2";
+import { API_BASE_URL } from "./config.js";
 
 // Get all blog posts
 export async function getPosts() {
 	try {
-		const response = await fetch(`${baseUrl}/posts`);
+		const response = await fetch(`${API_BASE_URL}/posts`);
 		if (!response.ok) {
 			throw Error(response.statusText);
 		}
@@ -18,7 +18,7 @@ export async function getPosts() {
 // Get a single blog post
 export async function getPost(id) {
 	try {
-		const response = await fetch(`${baseUrl}/posts/${id}`);
+		const response = await fetch(`${API_BASE_URL}/posts/${id}`);
 		if (!response.ok) {
 			throw Error(response.statusText);
 		}
