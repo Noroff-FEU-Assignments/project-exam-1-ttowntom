@@ -107,23 +107,16 @@ html {
 body {
 	max-width: var(--body-max-width);
 	background-color: var(--clr-blue-dark);
+	margin-inline: auto;
 	display: grid;
 	grid-template-rows: auto 1fr auto;
 }
 
-/* body,
-header,
-main,
-footer {
-	width: 100%;
-	margin-inline: auto;
-} */
-
 /* Widths setup :: Suggested by Kevin Powell https://www.youtube.com/watch?v=c13gpBrnGEw */
 .content-grid {
-	--padding-inline: 1rem;
-	--content-max-width: 70ch;
-	--breakout-max-width: 85ch;
+	--padding-inline: 2rem;
+	--content-max-width: 85ch;
+	--breakout-max-width: 120ch;
 
 	--breakout-size: calc(
 		(var(--breakout-max-width) - var(--content-max-width)) / 2
