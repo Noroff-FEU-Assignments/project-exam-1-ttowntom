@@ -12,6 +12,18 @@ Sections
 	align-items: center;
 }
 
+.ul-breakout {
+	margin-block: 1rem;
+
+	& li {
+		list-style: circle;
+
+		&:not(:last-of-type) {
+			margin-bottom: 0.25rem;
+		}
+	}
+}
+
 /********************************************************************************************
 Navigation
 ********************************************************************************************/
@@ -20,6 +32,18 @@ Navigation
 	gap: 1rem;
 	align-items: center;
 	padding: 1rem 0.5rem;
+}
+
+.btn-accent {
+	width: max-content;
+	margin-block: 1rem;
+	padding: 0.5rem 1rem;
+	background-color: var(--clr-orange);
+	color: var(--clr-black);
+	border-radius: 5px;
+	text-decoration: none;
+	font-family: var(--ff-accent);
+	font-size: 1rem;
 }
 
 /********************************************************************************************
@@ -31,4 +55,12 @@ Typography
 
 .text-right {
 	text-align: right;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.faq-answer:not(:last-of-type) {
+	margin-bottom: 1rem;
 }
