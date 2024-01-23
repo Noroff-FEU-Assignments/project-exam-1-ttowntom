@@ -117,6 +117,11 @@ main {
 	padding-bottom: 5rem;
 }
 
+footer {
+	border: 1px solid var(--clr-grey-desat);
+	border-radius: 5px;
+}
+
 /* Widths setup :: Suggested by Kevin Powell https://www.youtube.com/watch?v=c13gpBrnGEw */
 .content-grid {
 	--padding-inline: 2rem;
