@@ -262,7 +262,7 @@ h2 {
 	font-weight: var(--fw-400);
 	font-size: 1.5rem;
 	line-height: 1.2;
-	margin-bottom: 1rem;
+	margin-bottom: 0.75rem;
 
 	&:not(:first-of-type) {
 		margin-top: 2.5rem;
@@ -274,7 +274,7 @@ h3 {
 	font-weight: var(--fw-400);
 	font-size: 1.25rem;
 	line-height: 1.2;
-	margin-bottom: 1rem;
+	margin-bottom: 0.5rem;
 	margin-top: 1rem;
 }
 
@@ -286,6 +286,13 @@ h4 {
 	margin-bottom: 1rem;
 }
 
+.logo-subtitle {
+	display: block;
+	font-family: var(--ff-accent);
+	color: var(--clr-grey);
+	text-decoration: none;
+}
+
 p {
 	font-family: var(--ff-def);
 	font-size: 1rem;
@@ -295,9 +302,11 @@ p {
 	}
 }
 
-.logo-subtitle {
-	display: block;
+a {
 	font-family: var(--ff-accent);
-	color: var(--clr-grey);
-	text-decoration: none;
+	color: var(--clr-blue-accent);
+
+	&:is(:hover, :focus, :active) {
+		color: var(--clr-white);
+	}
 }

@@ -19,7 +19,7 @@ async function loadPost(id) {
 // Build blog post HTML
 function buildPost(post) {
 	// Create post date
-	//
+	//(Modified from suggestion by ChatGPT)
 	const date = new Date(post.date);
 	// Options for toLocaleDateString
 	const options = { year: "numeric", month: "long", day: "numeric" };
@@ -33,6 +33,14 @@ function buildPost(post) {
 	function createTaxonomyElements(post, taxonomyType, className, container) {
 		const wrapper = document.createElement("div");
 		wrapper.classList.add(`post-${taxonomyType}-wrapper`);
+
+		// Add tags title
+		if (taxonomyType === "post_tag") {
+			const title = document.createElement("p");
+			title.classList.add("post-tag-title");
+			title.textContent = "Tags: ";
+			wrapper.appendChild(title);
+		}
 
 		let elements = [];
 
@@ -126,6 +134,6 @@ export default function blogPost() {
 		loadPost(postId);
 	} else {
 		console.error("No post ID found in the URL");
-		// Handle the error appropriately
+		// 404 page
 	}
 }

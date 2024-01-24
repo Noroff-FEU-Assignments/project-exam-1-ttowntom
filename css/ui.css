@@ -36,8 +36,16 @@ Blog posts
 	object-fit: cover;
 }
 
+.post-content {
+	& p:first-child {
+		font-weight: 600;
+		margin-bottom: 2.5rem;
+	}
+}
+
 .post-img {
 	margin-inline: auto;
+	margin-block: 1rem;
 	object-fit: cover;
 	max-height: 40vh;
 	width: 100%;
@@ -53,6 +61,22 @@ Blog posts
 	color: var(--clr-grey);
 	font-size: 0.8rem;
 	margin-bottom: 0.2rem;
+}
+
+.post-category-wrapper {
+	margin-top: -0.75rem;
+	margin-bottom: 3rem;
+}
+
+.post-post_tag-wrapper {
+	margin-top: 5rem;
+}
+
+.post-tag-title {
+	font-family: var(--ff-accent);
+	color: var(--clr-grey);
+	font-size: 0.8rem;
+	margin-bottom: 0.5rem;
 }
 
 /********************************************************************************************

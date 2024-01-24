@@ -17,18 +17,22 @@ async function route(path) {
 			await loadPage("home");
 			break;
 		case "/blog/":
+		case "/blog":
 		case "/blog/index.html":
 			await loadPage("blog");
 			break;
 		case "/blog/post/":
+		case "/blog/post":
 		case "/blog/post/index.html":
 			await loadPage("blogPost");
 			break;
 		case "/about/":
+		case "/about":
 		case "/about/index.html":
 			await loadPage("about");
 			break;
 		case "/contact/":
+		case "/contact":
 		case "/contact/index.html":
 			await loadPage("contact");
 			break;
