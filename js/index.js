@@ -1,5 +1,5 @@
 // This function dynamically imports the page based on the route
-// Suggested by ChatGPT
+// (Modified from suggestion by ChatGPT)
 async function loadPage(page) {
 	try {
 		const module = await import(`./pages/${page}.js`);
@@ -13,22 +13,27 @@ async function loadPage(page) {
 async function route(path) {
 	switch (path.toLowerCase()) {
 		case "/":
+		case "/index.html":
 			await loadPage("home");
 			break;
 		case "/blog/":
+		case "/blog/index.html":
 			await loadPage("blog");
 			break;
 		case "/blog/post/":
+		case "/blog/post/index.html":
 			await loadPage("blogPost");
 			break;
 		case "/about/":
+		case "/about/index.html":
 			await loadPage("about");
 			break;
 		case "/contact/":
+		case "/contact/index.html":
 			await loadPage("contact");
 			break;
 		default:
-			await loadPage("notFound"); // Assuming you have a notFound module
+			await loadPage("notFound"); // ADD NOT FOUND PAGE!!
 	}
 }
 

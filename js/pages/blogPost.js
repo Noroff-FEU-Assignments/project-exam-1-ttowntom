@@ -19,7 +19,15 @@ async function loadPost(id) {
 // Build blog post HTML
 function buildPost(post) {
 	// Create post date
-	postdate.textContent = `Posted on: ${post.date.toLocaleString("nb-NO")} in`;
+	//
+	const date = new Date(post.date);
+	// Options for toLocaleDateString
+	const options = { year: "numeric", month: "long", day: "numeric" };
+
+	postdate.textContent = `Posted on: ${date.toLocaleDateString(
+		"en-US",
+		options
+	)} in`;
 
 	// Create post taxonomy elements
 	function createTaxonomyElements(post, taxonomyType, className, container) {
@@ -63,12 +71,13 @@ function buildPost(post) {
 	createTaxonomyElements(post, "post_tag", "post-tag", postTags);
 
 	// Create post content
-	// Unwrap images from divs (suggested by ChatGPT)
+	// Unwrap images from divs (modified from suggestion by ChatGPT)
 	function unwrapImages(content) {
 		// Parse the HTML string
 		const parser = new DOMParser();
 		const doc = parser.parseFromString(content, "text/html");
 
+		// Clean images
 		// Find all divs with the class 'wp-block-image'
 		const imageWrappers = doc.querySelectorAll(".wp-block-image");
 
