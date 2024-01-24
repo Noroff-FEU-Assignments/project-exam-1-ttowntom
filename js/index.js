@@ -18,7 +18,7 @@ async function route(path) {
 		case "/blog/":
 			await loadPage("blog");
 			break;
-		case "/blog/blogpost/":
+		case "/blog/post/":
 			await loadPage("blogPost");
 			break;
 		case "/about/":

@@ -1,5 +1,4 @@
 import { getPosts } from "/js/api/index.js";
-import { getFeatureImg } from "/js/api/index.js";
 
 // Grab wrappers
 const postsWrapper = document.querySelector("#posts");
@@ -32,17 +31,22 @@ async function postCard(post) {
 	// Create card wrapper
 	const card = document.createElement("a");
 	card.classList.add("post-card");
-	card.href = `/post.html?id=${post.id}`;
+	card.href = `post/?id=${post.id}`;
 
 	// Create card header image
 	const headerImg = document.createElement("img");
-	headerImg.classList.add("post-img");
-	try {
-		const imgData = await getFeatureImg(post.featured_media);
-		headerImg.src = imgData.guid.rendered;
-	} catch (error) {
-		console.error(`Error fetching feature image: ${error}`);
-		headerImg.src = "/img/codeJourneyLogoDarkBlue.png"; // Fallback image
+	headerImg.classList.add("post-card-img");
+	if (
+		post._embedded &&
+		post._embedded["wp:featuredmedia"] &&
+		post._embedded["wp:featuredmedia"][0]
+	) {
+		headerImg.src = post._embedded["wp:featuredmedia"][0].source_url;
+		headerImg.alt = post._embedded["wp:featuredmedia"][0].caption.rendered;
+	} else {
+		// Set a default image source or handle the absence of an image
+		headerImg.src = "/img/codeJourneyLogoDarkBlue.png";
+		headerImg.alt = "Code Journey Logo - No featured image available";
 	}
 
 	// Create card text wrapper

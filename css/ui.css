@@ -31,9 +31,16 @@ Blog posts
 	}
 }
 
-.post-img {
+.post-card-img {
 	height: 15rem;
 	object-fit: cover;
+}
+
+.post-img {
+	margin-inline: auto;
+	object-fit: cover;
+	max-height: 40vh;
+	width: 100%;
 }
 
 .post-text {
