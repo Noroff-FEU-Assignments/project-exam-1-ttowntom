@@ -1,7 +1,8 @@
 import { getPost } from "/js/api/index.js";
 
 // Grab wrappers
-const postdate = document.querySelector(".post-date");
+const postHero = document.querySelector("#hero-blog-post");
+const postDate = document.querySelector(".post-date");
 const postCategories = document.querySelector(".post-categories");
 const postTags = document.querySelector(".post-tags");
 const postContent = document.querySelector(".post-content");
@@ -18,13 +19,23 @@ async function loadPost(id) {
 
 // Build blog post HTML
 function buildPost(post) {
+	// Add hero image
+	postHero.style.backgroundImage = `linear-gradient(to top, hsla(0, 0%, 0%, 0.7), transparent 150%), url(${post._embedded["wp:featuredmedia"][0].source_url})`;
+	postHero.style.backgroundSize = "cover";
+	postHero.style.backgroundPosition = "center";
+
+	// Create post title
+	const postTitle = document.createElement("h1");
+	postTitle.innerText = post.title.rendered;
+	postHero.appendChild(postTitle);
+
 	// Create post date
 	//(Modified from suggestion by ChatGPT)
 	const date = new Date(post.date);
 	// Options for toLocaleDateString
 	const options = { year: "numeric", month: "long", day: "numeric" };
 
-	postdate.textContent = `Posted on: ${date.toLocaleDateString(
+	postDate.textContent = `Posted on: ${date.toLocaleDateString(
 		"en-US",
 		options
 	)} in`;

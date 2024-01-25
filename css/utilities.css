@@ -1,3 +1,6 @@
+/********************************************************************************************
+Positions
+********************************************************************************************/
 .relative {
 	position: relative;
 }
@@ -32,6 +35,12 @@ Navigation
 	text-decoration: none;
 	font-family: var(--ff-accent);
 	font-size: 1rem;
+	border: 1px solid var(--clr-orange);
+
+	&:is(:hover, :focus, :active) {
+		background-color: var(--clr-blue-accent-dark);
+		border: 1px solid var(--clr-grey);
+	}
 }
 
 /********************************************************************************************
@@ -51,4 +60,10 @@ Typography
 
 .faq-answer:not(:last-of-type) {
 	margin-bottom: 1rem;
+}
+/********************************************************************************************
+Elements
+********************************************************************************************/
+.rounded {
+	border-radius: 50vw;
 }
