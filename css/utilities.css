@@ -1,0 +1,69 @@
+/********************************************************************************************
+Positions
+********************************************************************************************/
+.relative {
+	position: relative;
+}
+
+/********************************************************************************************
+Sections
+********************************************************************************************/
+.flex-row {
+	display: flex;
+	gap: 2rem;
+	flex-direction: row;
+	align-items: center;
+}
+
+/********************************************************************************************
+Navigation
+********************************************************************************************/
+.menu {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+	padding: 1rem 0.5rem;
+}
+
+.btn-accent {
+	width: max-content;
+	margin-block: 1rem;
+	padding: 0.5rem 1rem;
+	background-color: var(--clr-orange);
+	color: var(--clr-black);
+	border-radius: 5px;
+	text-decoration: none;
+	font-family: var(--ff-accent);
+	font-size: 1rem;
+	border: 1px solid var(--clr-orange);
+
+	&:is(:hover, :focus, :active) {
+		background-color: var(--clr-blue-accent-dark);
+		border: 1px solid var(--clr-grey);
+	}
+}
+
+/********************************************************************************************
+Typography
+********************************************************************************************/
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.faq-answer:not(:last-of-type) {
+	margin-bottom: 1rem;
+}
+/********************************************************************************************
+Elements
+********************************************************************************************/
+.rounded {
+	border-radius: 50vw;
+}

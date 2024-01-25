@@ -1,0 +1,112 @@
+/********************************************************************************************
+Blog posts
+********************************************************************************************/
+/* Blog posts layout */
+#posts {
+	margin-inline: 1rem;
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: repeat(
+		auto-fit,
+		minmax(calc((var(--body-max-width) / 3) - 2rem), 1fr)
+	);
+}
+
+/* Blog posts cards */
+.post-card {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	background-color: var(--clr-black);
+	border-radius: 5px;
+	overflow: hidden;
+	border: 1px solid var(--clr-grey-desat);
+	border-left: 4px solid var(--clr-orange);
+	color: var(--clr-white);
+	text-decoration: none;
+
+	&:is(:hover, :focus, :active) {
+		border: 1px solid var(--clr-grey);
+		border-left: 4px solid var(--clr-blue-accent-dark);
+	}
+}
+
+.post-card-img {
+	height: 15rem;
+	object-fit: cover;
+}
+
+.post-content {
+	& p:first-child {
+		font-weight: 600;
+		margin-bottom: 2.5rem;
+	}
+}
+
+.post-img {
+	margin-inline: auto;
+	margin-block: 1rem;
+	object-fit: cover;
+	max-height: 40vh;
+	width: 100%;
+}
+
+.post-text {
+	padding: 1rem;
+	padding-bottom: 2rem;
+}
+
+.post-date {
+	font-family: var(--ff-accent);
+	color: var(--clr-grey);
+	font-size: 0.8rem;
+	margin-bottom: 0.2rem;
+}
+
+.post-category-wrapper {
+	margin-top: -0.75rem;
+	margin-bottom: 3rem;
+}
+
+.post-post_tag-wrapper {
+	margin-top: 5rem;
+}
+
+.post-tag-title {
+	font-family: var(--ff-accent);
+	color: var(--clr-grey);
+	font-size: 0.8rem;
+	margin-bottom: 0.5rem;
+}
+
+/********************************************************************************************
+Forms
+********************************************************************************************/
+input,
+textarea {
+	background-color: var(--clr-black);
+	border: 1px solid var(--clr-grey-desat);
+	border-left: 4px solid var(--clr-orange);
+	width: 100%;
+	border-radius: 5px;
+	padding: 0.5rem;
+
+	&:is(:focus, :active) {
+		border: 1px solid var(--clr-grey);
+		border-left: 4px solid var(--clr-blue-accent-dark);
+	}
+}
+
+textarea {
+	min-height: 10rem;
+}
+
+#contact-form {
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: 1fr 1fr;
+
+	& .span2 {
+		grid-column: span 2;
+	}
+}

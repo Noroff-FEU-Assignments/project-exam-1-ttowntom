@@ -1,0 +1,379 @@
+/* Import fonts */
+@import url("https://fonts.googleapis.com/css2?family=Anonymous+Pro&family=DM+Serif+Display&family=Space+Mono:wght@700&display=swap");
+
+/********************************************************************************************
+Root variables
+********************************************************************************************/
+:root {
+	--clr-white-actual: hsl(0, 0%, 100%);
+	--clr-white: hsl(226, 21%, 88%);
+	--clr-black: hsl(203, 62%, 4%);
+
+	--clr-blue-dark: hsl(218, 16%, 10%);
+	--clr-blue-accent: hsl(207, 90%, 68%);
+	--clr-blue-accent-dark: hsl(209, 64%, 35%);
+	--clr-purple: hsl(230, 23%, 25%);
+	--clr-orange: hsl(28, 72%, 72%);
+	--clr-grey: hsl(210, 9%, 58%);
+	--clr-grey-desat: hsla(210, 9%, 38%, 0.5);
+
+	--ff-def: system-ui;
+	--ff-header: "DM Serif Display", serif;
+	--ff-subHeader: "Anonymous Pro", monospace;
+	--ff-accent: "Cascadia Code", monospace;
+
+	--fw-400: 400;
+
+	--body-max-width: 1170px;
+}
+
+/********************************************************************************************
+CSS resets
+********************************************************************************************/
+/* Set border-box */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* Remove default margin and padding, set element font behavior */
+* {
+	margin: 0;
+	padding: 0;
+	min-width: 0; /* Prevent strange overflows :: Suggested by Josh Comeau https://www.joshwcomeau.com/css/interactive-guide-to-flexbox/#the-minimum-size-gotcha-11 */
+	font: inherit;
+}
+
+/* Make headings wrap nicely */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	text-wrap: balance;
+}
+
+/* Better readability for long paragraphs */
+p {
+	max-width: 75ch;
+	text-wrap: pretty; /* Prevent orphans */
+}
+
+html {
+	color-scheme: dark light; /* Set color theme */
+	hanging-punctuation: first last; /* Ensure prettier text lines */
+}
+
+/* Set global style and size */
+body {
+	min-height: 100vh; /* Fallback for unsupported browsers */
+	min-height: 100svh;
+	font-family: var(--ff-def);
+	color: var(--clr-white);
+	accent-color: var(--clr-orange);
+}
+
+/* Un-fruck media behavior */
+img,
+picture,
+svg,
+video {
+	display: block;
+	max-width: 100%;
+}
+
+/* Remove list styles */
+nav ul li {
+	list-style: none;
+}
+
+/* Better scroll behavior while respecting preference */
+@media (prefers-reduced-motion: no-preference) {
+	:has(:target) /* Takes in-page box-scrolling into account */ {
+		scroll-behavior: smooth;
+		scroll-padding-top: 2rem; /* Give some head room */
+	}
+}
+
+/********************************************************************************************
+Sections
+********************************************************************************************/
+html {
+	background-color: var(--clr-black);
+}
+
+body {
+	max-width: var(--body-max-width);
+	margin-inline: auto;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+}
+
+main {
+	background-color: var(--clr-blue-dark);
+	border-radius: 5px;
+	padding-bottom: 5rem;
+}
+
+footer {
+	border: 1px solid var(--clr-grey-desat);
+	border-radius: 5px;
+}
+
+/* Widths setup :: Suggested by Kevin Powell https://www.youtube.com/watch?v=c13gpBrnGEw */
+.content-grid {
+	--padding-inline: 2rem;
+	--content-max-width: 85ch;
+	--breakout-max-width: 120ch;
+
+	--breakout-size: calc(
+		(var(--breakout-max-width) - var(--content-max-width)) / 2
+	);
+
+	display: grid;
+	grid-template-columns:
+		[full-width-start] minmax(var(--padding-inline), 1fr)
+		[breakout-start] minmax(0, var(--breakout-size)) [content-start]
+		min(100% - (var(--padding-inline) * 2), var(--content-max-width))
+		[content-end] minmax(0, var(--breakout-size)) [breakout-end]
+		minmax(var(--padding-inline), 1fr) [full-width-end];
+}
+
+.content-grid > :not(.breakout, .full-width),
+.full-width > :not(.breakout, .full-width) {
+	grid-column: content;
+}
+
+.content-grid > .breakout {
+	grid-column: breakout;
+}
+
+.content-grid > .full-width {
+	grid-column: full-width;
+
+	display: grid;
+	grid-template-columns: inherit;
+}
+
+img.full-width {
+	width: 100%;
+	max-height: 45vh;
+	object-fit: cover;
+}
+/* ^ End widths setup */
+
+/* Main menu */
+.main-menu {
+	justify-content: space-between;
+}
+
+.main-menu img {
+	width: 5rem;
+}
+
+.main-menu-item {
+	font-family: var(--ff-accent);
+	color: var(--clr-white);
+	text-decoration: none;
+	font-size: 1.25rem;
+	padding: 0.25rem 0.5rem;
+	border-radius: 2px;
+
+	&:is(:hover, :focus, :active) {
+		color: var(--clr-black);
+		background-color: var(--clr-white);
+	}
+}
+
+/* Hero sections */
+.hero {
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: 65% auto;
+	align-items: center;
+	padding: 2rem 2rem 3rem 2rem;
+	margin-bottom: 3rem;
+
+	/* Patterns from Pattern Monster: https://pattern.monster/ */
+	&#hero-home {
+		background: linear-gradient(to right, hsla(0, 0%, 0%, 0.7), transparent 80%),
+			url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='29' height='33.487' patternTransform='scale(1) rotate(0)'><rect x='0' y='0' width='100%' height='100%' fill='hsla(218, 16%, 10%, 1)'/><path d='M29 20.928v14.813M14.5 12.56v16.745M29-2.559v6.744l-14.5 8.374L0 4.189v-6.745m29 6.742l14.5 8.37m0 16.745L29 20.928l-14.5 8.376L0 20.931l-14.5 8.376m0-16.744L0 4.189m0 31.487V20.931'  stroke-width='1' stroke='hsla(230, 23%, 25%, 1)' fill='none'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(%23a)'/></svg>");
+	}
+
+	&#hero-blog {
+		background: linear-gradient(to right, hsla(0, 0%, 0%, 0.7), transparent 80%),
+			url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='40' height='59.428' patternTransform='scale(1) rotate(0)'><rect x='0' y='0' width='100%' height='100%' fill='hsla(218, 16%, 10%, 1)'/><path d='M0 70.975V47.881m20-1.692L8.535 52.808v13.239L20 72.667l11.465-6.62V52.808zm0-32.95l11.465-6.62V-6.619L20-13.24 8.535-6.619V6.619L20 13.24m8.535 4.927v13.238L40 38.024l11.465-6.62V18.166L40 11.546zM20 36.333L0 47.88m0 0v23.094m0 0l20 11.548 20-11.548V47.88m0 0L20 36.333m0 0l20 11.549M0 11.547l-11.465 6.619v13.239L0 38.025l11.465-6.62v-13.24L0 11.548v-23.094l20-11.547 20 11.547v23.094M20 36.333V13.24'  stroke-linecap='square' stroke-width='1' stroke='hsla(230, 23%, 25%, 1)' fill='none'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(%23a)'/></svg>");
+	}
+
+	&#hero-about {
+		background: linear-gradient(to right, hsla(0, 0%, 0%, 0.7), transparent 80%),
+			url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='69.283' height='40' patternTransform='scale(1) rotate(0)'><rect x='0' y='0' width='100%' height='100%' fill='hsla(218, 16%, 10%)'/><path d='M46.189-20L57.736 0M46.189 20l11.547 20m-46.189 0l11.547 20M11.547 0l11.547 20m40.415 30H40.415M28.868 30H5.774m23.094-40H5.774m57.735 20H40.415m0 20L28.868 50m11.547-60L28.868 10m46.188 0L63.509 30M5.774 10L-5.773 30m75.056 10H46.189L34.64 20 46.19 0h23.094C73.13 6.667 76.98 13.333 80.83 20zM57.736 60H34.64L23.094 40l11.547-20h23.095c3.848 6.667 7.698 13.333 11.547 20L57.736 60zm0-40H34.64L23.094 0l11.547-20h23.095L69.283 0c-3.87 6.7-8.118 14.06-11.547 20zM34.64 60H11.547L0 40l11.547-20h23.094L46.19 40 34.64 60zm0-40H11.547L0 0l11.547-20h23.094L46.19 0 34.64 20zM23.094 40H0l-5.773-10-5.774-10L0 0h23.094l11.547 20-11.547 20z'  stroke-width='1' stroke='hsla(230, 23%, 25%)' fill='none'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(%23a)'/></svg>");
+	}
+
+	&#hero-contact {
+		background: linear-gradient(to right, hsla(0, 0%, 0%, 0.7), transparent 80%),
+			url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='20' height='20' patternTransform='scale(1) rotate(0)'><rect x='0' y='0' width='100%' height='100%' fill='hsla(218, 16%, 10%, 1)'/><path d='M10 15a5 5 0 110-10 5 5 0 010 10z'  stroke-width='1' stroke='hsla(230, 23%, 25%, 1)' fill='none'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(%23a)'/></svg>");
+	}
+}
+
+#hero-blog-post {
+	display: flex;
+	align-items: end;
+	min-height: 25vh;
+	padding-inline: 2rem;
+	padding-block: 3rem;
+	margin-bottom: 3rem;
+	border: 1px solid var(--clr-grey-desat);
+	border-radius: 5px;
+
+	& > h1 {
+		text-align: center;
+		margin-inline: auto;
+
+		&span {
+			display: block;
+		}
+	}
+
+	& > h1::after {
+		content: none;
+	}
+}
+
+/* Footer */
+footer {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	align-items: center;
+	padding: 2rem 1rem;
+}
+
+footer p,
+footer a {
+	font-family: var(--ff-accent);
+	color: var(--clr-grey);
+	font-size: 0.85rem;
+	text-decoration: none;
+}
+
+footer a:is(:hover, :focus, :active) {
+	color: var(--clr-white);
+}
+
+footer img {
+	margin-inline: auto;
+	width: 3.5rem;
+}
+
+/* Lists */
+ul,
+ol {
+	margin-block: 1rem;
+
+	& li {
+		list-style: circle;
+
+		&:not(:last-of-type) {
+			margin-bottom: 0.25rem;
+		}
+	}
+}
+
+/********************************************************************************************
+Typography
+********************************************************************************************/
+h1,
+.logo-title {
+	font-family: var(--ff-header);
+	font-weight: var(--fw-400);
+	color: var(--clr-white);
+	font-size: 2.5rem;
+	line-height: 1.2;
+	margin-bottom: 1rem;
+	text-decoration: none;
+
+	&::after {
+		content: ";";
+		font-size: 2rem;
+		font-family: var(--ff-accent);
+		font-weight: 200;
+		color: var(--clr-grey-desat);
+	}
+}
+
+h2 {
+	font-family: var(--ff-subHeader);
+	font-weight: var(--fw-400);
+	font-size: 1.5rem;
+	line-height: 1.2;
+	margin-bottom: 0.75rem;
+
+	&:not(:first-of-type) {
+		margin-top: 2.5rem;
+	}
+}
+
+h3 {
+	font-family: var(--ff-subHeader);
+	font-weight: var(--fw-400);
+	font-size: 1.25rem;
+	line-height: 1.2;
+	margin-bottom: 0.5rem;
+	margin-top: 1rem;
+}
+
+h4 {
+	font-family: var(--ff-subHeader);
+	font-weight: var(--fw-400);
+	font-size: 1.125rem;
+	line-height: 1.2;
+	margin-bottom: 1rem;
+}
+
+.logo-subtitle {
+	display: block;
+	font-family: var(--ff-accent);
+	color: var(--clr-grey);
+	text-decoration: none;
+}
+
+p {
+	font-family: var(--ff-def);
+	font-size: 1rem;
+
+	&:not(:last-of-type) {
+		margin-bottom: 1rem;
+	}
+}
+
+a {
+	font-family: var(--ff-accent);
+	color: var(--clr-blue-accent);
+	margin-inline: 0.15rem;
+
+	&:is(:hover, :focus, :active) {
+		color: var(--clr-white);
+	}
+}
+
+code {
+	font-family: var(--ff-accent);
+	color: var(--clr-orange);
+	font-size: 0.9rem;
+	padding: 0.25rem 0.5rem;
+	border-radius: 2px;
+	background-color: var(--clr-black);
+}
+
+/********************************************************************************************
+Elements
+********************************************************************************************/
+.hero-img,
+.hero > i {
+	margin-inline: auto;
+	max-height: 7rem;
+	font-size: 7rem;
+	color: var(--clr-purple);
+}
