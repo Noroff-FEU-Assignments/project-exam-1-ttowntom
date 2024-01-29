@@ -11,6 +11,7 @@ document.getElementById("btn-load-more").addEventListener("click", loadPosts);
 let currentPage = 1;
 const postsPerPage = 9;
 
+///////////////////////////////////////////////////////////////
 // Get all blog posts from server
 async function loadPosts() {
 	try {
