@@ -38,6 +38,7 @@ async function renderPosts(posts) {
 	}
 }
 
+///////////////////////////////////////////////////////////////
 // Build blog post card HTML
 async function postCard(post) {
 	// Create card wrapper
@@ -93,6 +94,7 @@ async function postCard(post) {
 	return card;
 }
 
+///////////////////////////////////////////////////////////////
 // Render the blog page
 export default function blog() {
 	loadPosts();
