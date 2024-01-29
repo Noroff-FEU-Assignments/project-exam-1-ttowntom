@@ -105,7 +105,7 @@ Blog posts carousel
 .carousel-track .post-card {
 	align-items: stretch;
 	flex: 1 0 calc(25% - 1.25rem);
-	min-height: 38rem;
+	min-height: 40rem; /* I don't love this */
 }
 
 .post-card .post-text {
@@ -119,11 +119,15 @@ Blog posts carousel
 	z-index: 2;
 	min-height: 1.5rem;
 	padding: 0.25rem;
-	background-color: var(--clr-grey-desat);
+	background-color: var(--clr-blue-accent-dark);
 	color: var(--clr-white);
-	border: none;
+	border: 1px solid var(--clr-blue-accent-dark);
 	border-radius: 3px;
 	cursor: pointer;
+
+	&:is(:hover, :active) {
+		border: 1px solid var(--clr-white);
+	}
 }
 
 .prev {
@@ -131,7 +135,26 @@ Blog posts carousel
 }
 
 .next {
-	right: -1.25rem;
+	right: -2rem;
+}
+
+.carousel-dots {
+	text-align: center;
+	padding-top: 1rem;
+}
+
+.carousel-dot {
+	display: inline-block;
+	width: 0.75rem;
+	height: 0.75rem;
+	margin: 0 0.5rem;
+	background-color: var(--clr-grey-desat);
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.carousel-dot.active {
+	background-color: var(--clr-white);
 }
 
 /********************************************************************************************
