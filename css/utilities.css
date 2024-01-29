@@ -25,7 +25,8 @@ Navigation
 	padding: 1rem 0.5rem;
 }
 
-.btn-accent {
+.btn-accent,
+.btn-accent-blue {
 	width: max-content;
 	margin-block: 1rem;
 	padding: 0.5rem 1rem;
@@ -40,6 +41,21 @@ Navigation
 	&:is(:hover, :focus, :active) {
 		background-color: var(--clr-blue-accent-dark);
 		border: 1px solid var(--clr-grey);
+	}
+}
+
+.btn-accent-blue {
+	display: block;
+	margin-inline: auto;
+	margin-top: 3rem;
+	color: var(--clr-white);
+	background-color: var(--clr-blue-accent-dark);
+	border: 1px solid var(--clr-blue-accent-dark);
+	cursor: pointer;
+
+	&:is(:hover, :focus, :active) {
+		background-color: var(--clr-blue-accent-dark);
+		border: 1px solid var(--clr-white);
 	}
 }
 
