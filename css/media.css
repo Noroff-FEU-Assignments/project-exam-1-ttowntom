@@ -5,4 +5,7 @@ Mobile media queries
 	.content-grid {
 		--padding-inline: 0.5rem;
 	}
+	.carousel-button {
+		display: none;
+	}
 }

@@ -1,5 +1,6 @@
 import { getPost } from "/js/api/index.js";
 
+///////////////////////////////////////////////////////////////
 // Grab wrappers
 const postHero = document.querySelector("#hero-blog-post");
 const postDate = document.querySelector(".post-date");
@@ -7,16 +8,19 @@ const postCategories = document.querySelector(".post-categories");
 const postTags = document.querySelector(".post-tags");
 const postContent = document.querySelector(".post-content");
 
+///////////////////////////////////////////////////////////////
 // Get the blog post from server
 async function loadPost(id) {
 	try {
 		let post = await getPost(id);
 		buildPost(post);
+		openModal();
 	} catch (error) {
 		console.log(`Error fetching post with id ${id}: `, error);
 	}
 }
 
+///////////////////////////////////////////////////////////////
 // Build blog post HTML
 function buildPost(post) {
 	// Add hero image
@@ -134,6 +138,62 @@ function buildPost(post) {
 	postContent.innerHTML = cleanContent(tempContent);
 }
 
+///////////////////////////////////////////////////////////////
+// Function to open images in modal
+function openModal() {
+	// Get the modal
+	var modal = document.querySelector("#image-modal");
+	var modalWrapper = document.querySelector(".modal-wrapper");
+
+	// Get the image and insert it inside the modal - use its "alt" text as a caption
+	var modalImg = document.querySelector("#modal-image");
+	var captionText = document.querySelector(".modal-caption");
+
+	// Function to get the largest image URL from srcset
+	// (Modified from suggestion by ChatGPT)
+	function getLargestImageUrl(srcset) {
+		const sources = srcset.split(",").map((src) => {
+			const [url, width] = src.trim().split(" ");
+			return { url, width: parseInt(width) };
+		});
+
+		// Find the source with the largest width
+		const largestSource = sources.reduce(
+			(max, src) => (src.width > max.width ? src : max),
+			sources[0]
+		);
+		return largestSource.url;
+	}
+
+	// Get all images inside blog posts and add click event to open modal
+	document.querySelectorAll(".post-content img").forEach((img) => {
+		img.onclick = function () {
+			modal.style.display = "block";
+			const largestImageUrl = img.hasAttribute("srcset")
+				? getLargestImageUrl(img.getAttribute("srcset"))
+				: img.src;
+			modalImg.src = largestImageUrl;
+			captionText.innerHTML = img.alt;
+		};
+	});
+
+	// Get the element that closes the modal
+	var span = document.getElementsByClassName("close-modal")[0];
+
+	// When the close button is clicked, close the modal
+	span.onclick = function () {
+		modal.style.display = "none";
+	};
+
+	// Close the modal when clicking outside of the image
+	window.onclick = function (event) {
+		if (event.target == modal || event.target == modalWrapper) {
+			modal.style.display = "none";
+		}
+	};
+}
+
+///////////////////////////////////////////////////////////////
 export default function blogPost() {
 	// Get query string from the URL
 	const queryString = window.location.search;

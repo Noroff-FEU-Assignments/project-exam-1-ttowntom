@@ -15,6 +15,22 @@
 			crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="/css/index.css" />
 		<link rel="icon" href="/img/favicon.ico" />
+		<!-- Hotjar Tracking Code for CodeJourney -->
+		<script>
+			(function (h, o, t, j, a, r) {
+				h.hj =
+					h.hj ||
+					function () {
+						(h.hj.q = h.hj.q || []).push(arguments);
+					};
+				h._hjSettings = { hjid: 3840097, hjsv: 6 };
+				a = o.getElementsByTagName("head")[0];
+				r = o.createElement("script");
+				r.async = 1;
+				r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+				a.appendChild(r);
+			})(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
+		</script>
 		<script src="/js/index.js" type="module"></script>
 	</head>
 	<body>
@@ -46,16 +62,34 @@
 					sophisticated front-end techniques, there’s always something new on
 					the horizon.
 				</p>
-				<h3>Explore categories</h3>
-				<div></div>
-				<h2>Featured Posts</h2>
-				<div></div>
+				<!-- <h3>Explore categories</h3>
+				<div></div> -->
+				<!-- <h2>Featured posts</h2>
+				<div></div> -->
+
+				<h2>Latest posts</h2>
+				<div class="carousel-wrapper breakout">
+					<button class="carousel-button prev">
+						<i class="fa-solid fa-chevrons-left"></i>
+					</button>
+					<div id="posts-carousel" class="carousel">
+						<div class="carousel-track">
+							<!-- Carousel items (posts) will be dynamically inserted here -->
+						</div>
+						<div class="carousel-dots">
+							<!-- Dots will be dynamically inserted here -->
+						</div>
+					</div>
+					<button class="carousel-button next">
+						<i class="fa-solid fa-chevrons-right"></i>
+					</button>
+				</div>
+
 				<h2>Meet the author</h2>
 				<p>
-					Hello! I'm [Your Name], the creator of CodeJourney.io With a
-					background that spans from the precise art of filmmaking to the
-					intricate dance of code, I bring a unique perspective to the tech
-					table.
+					Hello! I'm Tom, the creator of CodeJourney.io With a background that
+					spans from the precise art of filmmaking to the intricate dance of
+					code, I bring a unique perspective to the tech table.
 				</p>
 				<p>
 					As a lifelong learner and tinkerer, I've swapped lenses and film reels
