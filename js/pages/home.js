@@ -117,7 +117,7 @@ function getSlidesToShow() {
 function updateCarouselItemsWidth() {
 	const carouselItems = document.querySelectorAll(".carousel-track .post-card");
 	carouselItems.forEach((item) => {
-		item.style.flex = `0 0 calc(${100 / slidesToShow}% - 1rem)`;
+		item.style.flex = `0 0 calc(${100 / slidesToShow}% - 1.25rem)`;
 	});
 }
 
@@ -149,6 +149,7 @@ document.querySelector(".next").addEventListener("click", () => {
 	carouselTrack.style.transform = `translateX(-${
 		currentSlide * slideWidth * slidesToShow
 	}px)`;
+	createDots(Math.ceil(totalSlides / slidesToShow));
 });
 
 document.querySelector(".prev").addEventListener("click", () => {
@@ -161,6 +162,7 @@ document.querySelector(".prev").addEventListener("click", () => {
 	carouselTrack.style.transform = `translateX(-${
 		currentSlide * slideWidth * slidesToShow
 	}px)`;
+	createDots(Math.ceil(totalSlides / slidesToShow));
 });
 
 // Function to create dots
