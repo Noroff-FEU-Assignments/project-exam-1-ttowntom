@@ -56,7 +56,6 @@ async function loadMenu() {
 	// Set active menu item
 	const path = location.pathname;
 	const links = document.querySelectorAll(".main-menu-item");
-	console.log(path);
 	links.forEach((link) => {
 		if (link.getAttribute("href") === path) {
 			link.classList.add("active");

@@ -1,4 +1,11 @@
 /********************************************************************************************
+Displays
+********************************************************************************************/
+.display--none {
+	display: none;
+}
+
+/********************************************************************************************
 Positions
 ********************************************************************************************/
 .relative {
@@ -15,6 +22,10 @@ Sections
 	align-items: center;
 }
 
+.flex-justify-end {
+	justify-content: flex-end;
+}
+
 /********************************************************************************************
 Navigation
 ********************************************************************************************/
@@ -26,7 +37,8 @@ Navigation
 }
 
 .btn-accent,
-.btn-accent-blue {
+.btn-accent-blue,
+.btn-error {
 	width: max-content;
 	margin-block: 1rem;
 	padding: 0.5rem 1rem;
@@ -41,6 +53,7 @@ Navigation
 	&:is(:hover, :focus, :active) {
 		background-color: var(--clr-blue-accent-dark);
 		border: 1px solid var(--clr-grey);
+		color: var(--clr-white);
 	}
 }
 
@@ -48,7 +61,6 @@ Navigation
 	display: block;
 	margin-inline: auto;
 	margin-top: 3rem;
-	color: var(--clr-white);
 	background-color: var(--clr-blue-accent-dark);
 	border: 1px solid var(--clr-blue-accent-dark);
 	cursor: pointer;
@@ -57,6 +69,14 @@ Navigation
 		background-color: var(--clr-blue-accent-dark);
 		border: 1px solid var(--clr-white);
 	}
+}
+
+.btn-error,
+.btn-error:is(:hover, :focus, :active) {
+	background-color: var(--clr-error-light);
+	border: 1px solid var(--clr-error-dark);
+	color: var(--clr-grey);
+	cursor: not-allowed;
 }
 
 /********************************************************************************************
@@ -82,4 +102,22 @@ Elements
 ********************************************************************************************/
 .rounded {
 	border-radius: 50vw;
+}
+
+.visually-hidden {
+	/* Suggested by luxplanjay - https://gist.github.com/luxplanjay/6f6936b1bba7afe006fa9317b07b6045 */
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	border: 0;
+	padding: 0;
+
+	outline: 0;
+	outline-offset: 0;
+
+	white-space: nowrap;
+	clip-path: inset(100%);
+	clip: rect(0 0 0 0);
+	overflow: hidden;
 }

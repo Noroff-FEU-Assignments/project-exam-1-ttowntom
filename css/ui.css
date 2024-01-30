@@ -188,3 +188,33 @@ textarea {
 		grid-column: span 2;
 	}
 }
+
+.form-btn-wrapper {
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+	align-items: center;
+	justify-content: flex-end;
+	margin-top: -1rem;
+	margin-bottom: 2rem;
+}
+
+.error-msg {
+	font-family: var(--ff-accent);
+	font-size: 0.85rem;
+	margin-top: 0.25rem;
+	padding: 0.5rem;
+	background-color: var(--clr-error-dark);
+	color: var(--clr-white);
+	border: 1px solid var(--clr-error-light);
+	border-top: 4px solid var(--clr-error-light);
+	border-radius: 5px;
+	max-width: 100%;
+
+	&::before {
+		font: var(--fa-font-solid);
+		content: "\f06a";
+		font-size: 1rem;
+		margin-right: 0.5rem;
+	}
+}
