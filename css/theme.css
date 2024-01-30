@@ -181,7 +181,8 @@ img.full-width {
 	padding: 0.25rem 0.5rem;
 	border-radius: 2px;
 
-	&:is(:hover, :focus, :active) {
+	&:is(:hover, :focus, :active),
+	&.active {
 		color: var(--clr-black);
 		background-color: var(--clr-white);
 	}
