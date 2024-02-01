@@ -207,7 +207,7 @@ textarea {
 	background-color: var(--clr-error-dark);
 	color: var(--clr-white);
 	border: 1px solid var(--clr-error-light);
-	border-top: 4px solid var(--clr-error-light);
+	border-top: 4px solid var(--clr-grey);
 	border-radius: 5px;
 	max-width: 100%;
 
