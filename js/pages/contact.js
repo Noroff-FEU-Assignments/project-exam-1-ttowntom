@@ -1,3 +1,5 @@
+import { postContactForm } from "/js/api/index.js";
+
 function formValidation() {
 	// Get the form and input fields
 	const form = document.querySelector("#contact-form");
@@ -56,8 +58,9 @@ function formValidation() {
 		});
 
 		if (isFormValid) {
-			console.log("Form is valid and can be submitted");
-			// You can now submit the form data using fetch or another AJAX method
+			const formData = new FormData(form);
+			const formId = 162;
+			postContactForm(formId, formData);
 		}
 	});
 

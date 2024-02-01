@@ -3,7 +3,7 @@ import { API_BASE_URL } from "./config.js";
 
 export async function getFeatureImg(id) {
 	try {
-		const response = await fetch(`${API_BASE_URL}/media/${id}`);
+		const response = await fetch(`${API_BASE_URL}wp/v2/media/${id}`);
 		if (!response.ok) {
 			throw Error(response.statusText);
 		}
