@@ -4,9 +4,16 @@ import { postCard } from "../components/buildPostCard.js";
 // Grab wrappers
 const postsWrapper = document.querySelector("#posts");
 const featuredWrapper = document.querySelector("#featured");
+const mainLoader = document.querySelector("#main-loader");
+const postsLoader = document.querySelectorAll(".posts-loader");
+const loadMoreBtn = document.querySelector("#btn-load-more");
 
 // Add event listener to load more button
-document.getElementById("btn-load-more").addEventListener("click", loadPosts);
+loadMoreBtn.addEventListener("click", function () {
+	loadPosts();
+	this.classList.add("display--none");
+	postsLoader.forEach((loader) => loader.classList.remove("display--none"));
+});
 
 // Page tracking
 let currentPage = 1;
@@ -18,10 +25,12 @@ async function loadPosts() {
 	try {
 		let posts = await getPosts(`per_page=${postsPerPage}&page=${currentPage}`);
 		renderPosts(posts);
+		// Hide loaders
+		postsLoader.forEach((loader) => loader.classList.add("display--none"));
 		// Remove load more button if there are no more posts to load
 		posts.length < postsPerPage
-			? document.getElementById("btn-load-more").remove()
-			: null;
+			? loadMoreBtn.remove()
+			: loadMoreBtn.classList.remove("display--none");
 		currentPage++;
 	} catch (error) {
 		console.log("Error fetching posts:", error);
@@ -33,6 +42,7 @@ async function renderPosts(posts) {
 	for (const post of posts) {
 		try {
 			const card = await postCard(post);
+			mainLoader.remove();
 			postsWrapper.appendChild(card);
 		} catch (error) {
 			console.error("Error creating post card:", error);

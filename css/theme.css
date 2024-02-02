@@ -228,7 +228,7 @@ img.full-width {
 	padding-inline: 2rem;
 	padding-block: 3rem;
 	margin-bottom: 3rem;
-	border: 1px solid var(--clr-grey-desat);
+	border: 1px solid var(--clr-blue-dark);
 	border-radius: 5px;
 
 	& > h1 {

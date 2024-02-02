@@ -10,28 +10,20 @@ export async function postContactForm(formId, formData) {
 			body: formData,
 		});
 
-		if (!response.ok) {
-			throw new Error(`HTTP error! Status: ${response.status}`);
-		}
-
 		const data = await response.json();
 
-		if (data.status === "mail_sent") {
-			console.log("Form submitted successfully!");
-			// Redirect to success page
-			window.location.href = "success/";
-		} else {
+		if (!response.ok || data.status !== "mail_sent") {
+			// Handle API-level error or unsuccessful form submission
 			console.error("Form submission error:", data.message);
-			console.log(
-				"This is expected, as I'm hosting WP myself and have not set up the mail server, thus: you are redirected to the success page anyways! 🎉"
+			throw new Error(
+				data.message || "An error occurred during form submission."
 			);
-			// Redirect to success page even though the form submission failed, cause I'm hosting WP myself and have not set up the mail server
-			window.location.href = "success/";
 		}
 
+		console.log("Form submitted successfully! 🎉");
 		return data;
 	} catch (error) {
 		console.error("Error submitting form:", error);
-		throw error;
+		throw error; // Rethrow to be handled by the caller
 	}
 }

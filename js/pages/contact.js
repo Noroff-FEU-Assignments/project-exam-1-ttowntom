@@ -8,6 +8,19 @@ function formValidation() {
 	const subjectInput = form.querySelector("#subject");
 	const messageInput = form.querySelector("#message");
 	const submitButton = form.querySelector("#form-send");
+	const loader = document.querySelectorAll(".loader-display");
+
+	// Show loader and hide form function
+	function showLoaderHideForm() {
+		form.style.display = "none";
+		loader.forEach((loader) => loader.classList.remove("display--none"));
+	}
+
+	// Hide loader and show form function
+	function hideLoaderShowForm() {
+		form.style.display = "grid";
+		loader.forEach((loader) => loader.classList.add("display--none"));
+	}
 
 	// Function to validate input
 	function validateInput(input) {
@@ -41,8 +54,7 @@ function formValidation() {
 	}
 
 	// Event listener for form submission
-	form.addEventListener("submit", function (event) {
-		// Prevent the default form submit action
+	form.addEventListener("submit", async function (event) {
 		event.preventDefault();
 
 		let isFormValid = true;
@@ -58,9 +70,25 @@ function formValidation() {
 		});
 
 		if (isFormValid) {
+			showLoaderHideForm();
 			const formData = new FormData(form);
 			const formId = 162;
-			postContactForm(formId, formData);
+
+			postContactForm(formId, formData)
+				.then((data) => {
+					// Handle success
+					window.location.href = "/success/";
+				})
+				.catch((error) => {
+					// Handle failure
+					console.error("Error submitting form:", error);
+
+					// Error is expected as I host the WP myself and have not setup email sending, thus a faky-fake success is in order 😜
+					window.location.href = "/success/";
+
+					// Under normal conditions, the form would be shown again with an error message
+					// hideLoaderShowForm();
+				});
 		}
 	});
 
