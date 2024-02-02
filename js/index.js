@@ -37,7 +37,7 @@ async function route(path) {
 			await loadPage("contact");
 			break;
 		default:
-			await loadPage("notFound"); // ADD NOT FOUND PAGE!!
+			await loadPage("notFound"); // Might want to redirect to 404 page here
 	}
 }
 
@@ -52,6 +52,15 @@ async function loadMenu() {
 	const response = await fetch("/components/mainMenu.html");
 	const menuHtml = await response.text();
 	document.getElementById("header").innerHTML = menuHtml;
+
+	// Set active menu item
+	const path = location.pathname;
+	const links = document.querySelectorAll(".main-menu-item");
+	links.forEach((link) => {
+		if (link.getAttribute("href") === path) {
+			link.classList.add("active");
+		}
+	});
 }
 
 // Load footer

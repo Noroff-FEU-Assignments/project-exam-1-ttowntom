@@ -12,6 +12,8 @@ Root variables
 	--clr-blue-dark: hsl(218, 16%, 10%);
 	--clr-blue-accent: hsl(207, 90%, 68%);
 	--clr-blue-accent-dark: hsl(209, 64%, 35%);
+	--clr-error-light: hsl(4, 55%, 56%);
+	--clr-error-dark: hsl(11, 60%, 36%);
 	--clr-purple: hsl(230, 23%, 25%);
 	--clr-orange: hsl(28, 72%, 72%);
 	--clr-grey: hsl(210, 9%, 58%);
@@ -181,7 +183,8 @@ img.full-width {
 	padding: 0.25rem 0.5rem;
 	border-radius: 2px;
 
-	&:is(:hover, :focus, :active) {
+	&:is(:hover, :focus, :active),
+	&.active {
 		color: var(--clr-black);
 		background-color: var(--clr-white);
 	}
@@ -225,7 +228,7 @@ img.full-width {
 	padding-inline: 2rem;
 	padding-block: 3rem;
 	margin-bottom: 3rem;
-	border: 1px solid var(--clr-grey-desat);
+	border: 1px solid var(--clr-blue-dark);
 	border-radius: 5px;
 
 	& > h1 {
@@ -337,6 +340,10 @@ h4 {
 	font-family: var(--ff-accent);
 	color: var(--clr-grey);
 	text-decoration: none;
+
+	&:is(:hover, :focus, :active) {
+		color: var(--clr-grey);
+	}
 }
 
 p {
@@ -370,6 +377,10 @@ code {
 /********************************************************************************************
 Elements
 ********************************************************************************************/
+button {
+	cursor: pointer;
+}
+
 /* Hero */
 .hero-img,
 .hero > i {

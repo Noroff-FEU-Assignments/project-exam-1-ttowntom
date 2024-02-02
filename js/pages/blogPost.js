@@ -7,6 +7,7 @@ const postDate = document.querySelector(".post-date");
 const postCategories = document.querySelector(".post-categories");
 const postTags = document.querySelector(".post-tags");
 const postContent = document.querySelector(".post-content");
+const loader = document.querySelector(".loader-wrapper");
 
 ///////////////////////////////////////////////////////////////
 // Get the blog post from server
@@ -14,6 +15,8 @@ async function loadPost(id) {
 	try {
 		let post = await getPost(id);
 		buildPost(post);
+		loader.remove();
+		postHero.style.borderColor = "var(--clr-grey-desat)";
 		openModal();
 	} catch (error) {
 		console.log(`Error fetching post with id ${id}: `, error);

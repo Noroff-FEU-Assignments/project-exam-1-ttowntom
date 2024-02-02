@@ -3,6 +3,8 @@ import { postCard } from "../components/buildPostCard.js";
 
 // Grab wrappers
 const carouselWrapper = document.querySelector(".carousel-track");
+const loader = document.querySelector(".loader-wrapper");
+const carouselBtns = document.querySelectorAll(".carousel-button");
 
 ///////////////////////////////////////////////////////////////
 // Get all blog posts from server
@@ -20,8 +22,10 @@ async function renderPosts(posts) {
 	for (const post of posts) {
 		try {
 			const card = await postCard(post);
+			loader.remove();
 			updateCarouselItemsWidth();
 			carouselWrapper.appendChild(card);
+			carouselBtns.forEach((btn) => btn.classList.remove("display--none"));
 			createDots(Math.ceil(totalSlides / slidesToShow));
 		} catch (error) {
 			console.error("Error creating post card:", error);
