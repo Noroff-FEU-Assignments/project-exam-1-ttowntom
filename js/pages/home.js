@@ -144,6 +144,68 @@ function moveToSlide(slideIndex) {
 	updateDots();
 }
 
+// Swipe gesture handling
+let touchStartX = 0;
+let touchEndX = 0;
+
+// Event listener for touch start
+carouselTrack.addEventListener(
+	"touchstart",
+	function (event) {
+		touchStartX = event.changedTouches[0].screenX;
+	},
+	false
+);
+
+// Event listener for touch move
+carouselTrack.addEventListener(
+	"touchmove",
+	function (event) {
+		touchEndX = event.changedTouches[0].screenX;
+	},
+	false
+);
+
+// Event listener for touch end
+carouselTrack.addEventListener(
+	"touchend",
+	function (event) {
+		handleSwipeGesture();
+	},
+	false
+);
+
+function handleSwipeGesture() {
+	if (touchEndX < touchStartX) {
+		// Swiped left
+		moveNext();
+	}
+	if (touchEndX > touchStartX) {
+		// Swiped right
+		movePrev();
+	}
+}
+
+function moveNext() {
+	// Logic to move to the next slide
+	const slideWidth = carouselTrack.clientWidth / slidesToShow;
+	currentSlide = Math.min(currentSlide + 1, totalSlides / slidesToShow - 1);
+	carouselTrack.style.transform = `translateX(-${
+		currentSlide * slideWidth * slidesToShow
+	}px)`;
+	updateDots();
+}
+
+function movePrev() {
+	// Logic to move to the previous slide
+	const slideWidth = carouselTrack.clientWidth / slidesToShow;
+	currentSlide = Math.max(currentSlide - 1, 0);
+	carouselTrack.style.transform = `translateX(-${
+		currentSlide * slideWidth * slidesToShow
+	}px)`;
+	updateDots();
+}
+
 export default function home() {
 	loadPosts();
 }
