@@ -28,9 +28,14 @@ Navigation
 ********************************************************************************************/
 .menu {
 	display: flex;
+	flex-wrap: wrap;
 	gap: 1rem;
 	align-items: center;
 	padding: 1rem 0.5rem;
+}
+
+.menu-last-li {
+	margin-bottom: 0.25rem;
 }
 
 .btn-accent,

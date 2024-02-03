@@ -61,6 +61,30 @@ async function loadMenu() {
 			link.classList.add("active");
 		}
 	});
+
+	// Handle responsive menu
+	const menuToggle = document.querySelector(".menu-toggle");
+	const menu = document.querySelector("#main-menu");
+	const menuIcon = menuToggle.querySelector("i");
+	const menuText = menuToggle.querySelector("p");
+
+	menuToggle.addEventListener("click", () => {
+		const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+		menuToggle.setAttribute("aria-expanded", !isExpanded);
+		menuToggle.setAttribute(
+			"aria-label",
+			isExpanded ? "Open menu" : "Close menu"
+		);
+		menu.style.display = isExpanded ? "none" : "block";
+		menuText.textContent = isExpanded ? "Open menu" : "Close menu";
+		if (isExpanded) {
+			menuIcon.classList.remove("fa-arrow-down-to-line");
+			menuIcon.classList.add("fa-arrow-up");
+		} else {
+			menuIcon.classList.remove("fa-arrow-up");
+			menuIcon.classList.add("fa-arrow-down-to-line");
+		}
+	});
 }
 
 // Load footer

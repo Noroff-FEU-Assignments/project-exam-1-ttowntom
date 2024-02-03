@@ -1,11 +1,47 @@
 /********************************************************************************************
 Mobile media queries
 ********************************************************************************************/
-@media (max-width: 766px) {
+@media (max-width: 802px) {
+	/* Change navigation functionality */
+	.menu-toggle {
+		display: flex;
+	}
+
+	#main-menu {
+		display: none;
+		position: fixed;
+		bottom: 3rem;
+		left: 0;
+		width: 100%;
+		padding: 2rem;
+		background-color: var(--clr-blue-dark);
+		border-radius-top: 5px;
+		box-shadow: 0 -1rem 1rem var(--clr-blue-dark-desat);
+		z-index: 900;
+
+		& .menu {
+			flex-direction: column;
+		}
+	}
+
+	/* Show the footer, compensate for menu toggle height */
+	body {
+		padding-bottom: 3rem;
+	}
+
+	/* Push content further to the sides */
 	.content-grid {
 		--padding-inline: 0.5rem;
 	}
+
+	/* Remove nav buttons on carousel */
 	.carousel-button {
 		display: none;
+	}
+}
+
+@media (max-width: 395) {
+	.header img {
+		max-width: 2rem;
 	}
 }
