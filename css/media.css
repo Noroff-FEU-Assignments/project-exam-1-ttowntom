@@ -1,6 +1,20 @@
 /********************************************************************************************
 Mobile media queries
 ********************************************************************************************/
+@media (max-width: 395px) {
+	.logo-title {
+		font-size: 1.5rem;
+	}
+
+	.header img {
+		max-width: 3rem;
+	}
+
+	.flex-row {
+		gap: 0.5rem;
+	}
+}
+
 @media (max-width: 802px) {
 	/* Change navigation functionality */
 	.menu-toggle {
@@ -37,11 +51,5 @@ Mobile media queries
 	/* Remove nav buttons on carousel */
 	.carousel-button {
 		display: none;
-	}
-}
-
-@media (max-width: 395) {
-	.header img {
-		max-width: 2rem;
 	}
 }
