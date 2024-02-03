@@ -284,6 +284,10 @@ footer {
 	grid-template-columns: repeat(3, 1fr);
 	align-items: center;
 	padding: 2rem 1rem;
+
+	& p {
+		text-align: right;
+	}
 }
 
 footer p,
