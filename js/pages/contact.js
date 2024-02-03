@@ -14,12 +14,14 @@ function formValidation() {
 	function showLoaderHideForm() {
 		form.style.display = "none";
 		loader.forEach((loader) => loader.classList.remove("display--none"));
+		loader.forEach((loader) => loader.classList.add("margin-bottom-2"));
 	}
 
 	// Hide loader and show form function
 	function hideLoaderShowForm() {
 		form.style.display = "grid";
 		loader.forEach((loader) => loader.classList.add("display--none"));
+		loader.forEach((loader) => loader.classList.remove("margin-bottom-2"));
 	}
 
 	// Function to validate input

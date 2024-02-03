@@ -10,6 +10,7 @@ Root variables
 	--clr-black: hsl(203, 62%, 4%);
 
 	--clr-blue-dark: hsl(218, 16%, 10%);
+	--clr-blue-dark-desat: hsla(218, 16%, 10%, 0.5);
 	--clr-blue-accent: hsl(207, 90%, 68%);
 	--clr-blue-accent-dark: hsl(209, 64%, 35%);
 	--clr-error-light: hsl(4, 55%, 56%);
@@ -167,11 +168,43 @@ img.full-width {
 /* ^ End widths setup */
 
 /* Main menu */
-.main-menu {
-	justify-content: space-between;
+.menu-toggle {
+	display: none;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 1000;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	padding-block: 1rem;
+	border: none;
+	border-radius: 5px;
+	border-top: 4px solid var(--clr-orange);
+	background-color: var(--clr-black);
+	box-shadow: 0 -1rem 1rem var(--clr-blue-dark-desat);
+
+	& i {
+		padding: 0.25rem;
+		border-radius: 50%;
+		width: 1.5rem;
+		aspect-ratio: 1/1;
+		background-color: var(--clr-orange);
+		color: var(--clr-black);
+	}
+
+	& p {
+		margin-left: 0.5rem;
+		font-family: var(--ff-accent);
+	}
 }
 
-.main-menu img {
+.header {
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.header img {
 	width: 5rem;
 }
 
@@ -195,9 +228,26 @@ img.full-width {
 	display: grid;
 	gap: 1rem;
 	grid-template-columns: 65% auto;
+	grid-template-rows: auto;
 	align-items: center;
 	padding: 2rem 2rem 3rem 2rem;
 	margin-bottom: 3rem;
+	grid-template-areas:
+		"title image"
+		"text image";
+
+	& h1 {
+		grid-area: title;
+	}
+
+	& img,
+	i {
+		grid-area: image;
+	}
+
+	p {
+		grid-area: text;
+	}
 
 	/* Patterns from Pattern Monster: https://pattern.monster/ */
 	&#hero-home {
@@ -251,6 +301,10 @@ footer {
 	grid-template-columns: repeat(3, 1fr);
 	align-items: center;
 	padding: 2rem 1rem;
+
+	& p {
+		text-align: right;
+	}
 }
 
 footer p,

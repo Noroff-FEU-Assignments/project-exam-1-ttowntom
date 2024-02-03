@@ -1,10 +1,98 @@
 /********************************************************************************************
 Mobile media queries
 ********************************************************************************************/
-@media (max-width: 766px) {
+@media (max-width: 395px) {
+	.logo-title {
+		font-size: 1.5rem;
+	}
+
+	.header img {
+		max-width: 3rem;
+	}
+
+	.flex-row {
+		gap: 0.5rem;
+	}
+}
+
+@media (max-width: 802px) {
+	/* Change navigation functionality */
+	.menu-toggle {
+		display: flex;
+	}
+
+	#main-menu {
+		display: none;
+		position: fixed;
+		bottom: 3rem;
+		left: 0;
+		width: 100%;
+		padding: 2rem;
+		background-color: var(--clr-blue-dark);
+		border-radius-top: 5px;
+		box-shadow: 0 -1rem 1rem var(--clr-blue-dark-desat);
+		z-index: 900;
+
+		& .menu {
+			flex-direction: column;
+		}
+	}
+
+	/* Make hero sections more effective */
+	.hero {
+		grid-template-rows: auto 1fr;
+		grid-template-areas:
+			"title image"
+			"text text";
+	}
+
+	.hero-img,
+	.hero > i {
+		max-height: 3rem;
+		font-size: 3rem;
+	}
+
+	/* Re-configure the footer */
+	footer {
+		/* grid-template-rows: repeat(auto, 1fr); */
+		grid-template-columns: 1fr;
+		justify-items: center;
+		gap: 1rem;
+		padding: 1rem 0.5rem;
+
+		& nav .menu {
+			justify-content: center;
+			padding-block: 0;
+			margin-block: 0;
+			text-align: center;
+
+			& li {
+				margin-block: 0;
+			}
+		}
+		& p {
+			text-align: center;
+		}
+	}
+
+	/* Re-configure the contact form */
+	#contact-form {
+		& .span2-mobile {
+			grid-column: span 2;
+		}
+	}
+
+	/* Show the footer, compensate for menu toggle height */
+	body {
+		padding-bottom: 4rem;
+	}
+
+	/* Push content further to the sides */
 	.content-grid {
 		--padding-inline: 0.5rem;
 	}
+
+	/* Remove nav buttons on carousel */
 	.carousel-button {
 		display: none;
 	}
