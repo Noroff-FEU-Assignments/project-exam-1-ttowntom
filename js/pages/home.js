@@ -175,7 +175,7 @@ carouselTrack.addEventListener(
 	false
 );
 
-const swipeThreshold = 150; // Number of pixels touch must move to count as a swipe
+const swipeThreshold = 100; // Number of pixels touch must move to count as a swipe
 
 function handleSwipeGesture() {
 	// Check the distance of the swipe
