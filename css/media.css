@@ -38,6 +38,20 @@ Mobile media queries
 		}
 	}
 
+	/* Make hero sections more effective */
+	.hero {
+		grid-template-rows: auto 1fr;
+		grid-template-areas:
+			"title image"
+			"text text";
+	}
+
+	.hero-img,
+	.hero > i {
+		max-height: 3rem;
+		font-size: 3rem;
+	}
+
 	/* Re-configure the footer */
 	footer {
 		/* grid-template-rows: repeat(auto, 1fr); */
