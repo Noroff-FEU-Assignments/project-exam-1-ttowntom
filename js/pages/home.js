@@ -175,14 +175,20 @@ carouselTrack.addEventListener(
 	false
 );
 
+const swipeThreshold = 50; // Number of pixels touch must move to count as a swipe
+
 function handleSwipeGesture() {
-	if (touchEndX < touchStartX) {
-		// Swiped left
-		moveNext();
-	}
-	if (touchEndX > touchStartX) {
-		// Swiped right
-		movePrev();
+	// Check the distance of the swipe
+	const touchDistance = Math.abs(touchStartX - touchEndX);
+
+	if (touchDistance >= swipeThreshold) {
+		if (touchEndX < touchStartX) {
+			// Swiped left
+			moveNext();
+		} else if (touchEndX > touchStartX) {
+			// Swiped right
+			movePrev();
+		}
 	}
 }
 
