@@ -75,6 +75,13 @@ Mobile media queries
 		}
 	}
 
+	/* Re-configure the contact form */
+	#contact-form {
+		& .span2-mobile {
+			grid-column: span 2;
+		}
+	}
+
 	/* Show the footer, compensate for menu toggle height */
 	body {
 		padding-bottom: 4rem;
