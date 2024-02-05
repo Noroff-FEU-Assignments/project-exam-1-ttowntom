@@ -8,6 +8,8 @@ const mainLoader = document.querySelector("#main-loader");
 const postsLoader = document.querySelectorAll(".posts-loader");
 const loadMoreBtn = document.querySelector("#btn-load-more");
 const categories = document.querySelectorAll(".category");
+const searchInput = document.querySelector("#search");
+const searchBtn = document.querySelector(".filter-search button");
 
 let activeCategory = null;
 
@@ -16,6 +18,8 @@ categories.forEach((catElement) => {
 	catElement.addEventListener("click", function () {
 		// Reset currentPage to 1
 		currentPage = 1;
+		// Clear search input
+		searchInput.value = "";
 		// Clear posts wrapper
 		postsWrapper.innerHTML = "";
 		// Hide load more button
@@ -38,6 +42,33 @@ categories.forEach((catElement) => {
 	});
 });
 
+// Handle search
+function performSearch() {
+	const searchTerm = searchInput.value.trim();
+
+	if (searchTerm) {
+		// Clear posts wrapper
+		postsWrapper.innerHTML = "";
+		// Hide load more button
+		loadMoreBtn.classList.add("display--none");
+		// Show loaders
+		postsLoader.forEach((loader) => loader.classList.remove("display--none"));
+		// Remove active class from all categories
+		categories.forEach((cat) => cat.classList.remove("active"));
+		// Get posts from server
+		loadPosts("", searchTerm);
+	}
+}
+
+// Add event listener to search button
+searchBtn.addEventListener("click", performSearch);
+// Add event listener to search input
+searchInput.addEventListener("keydown", function (e) {
+	if (e.key === "Enter") {
+		performSearch();
+	}
+});
+
 // Add event listener to load more button
 loadMoreBtn.addEventListener("click", function () {
 	currentPage++;
@@ -57,10 +88,13 @@ const postsPerPage = 9;
 
 ///////////////////////////////////////////////////////////////
 // Get blog posts from server
-async function loadPosts(categoryParams = "") {
+async function loadPosts(categoryParams = "", searchTerm = "") {
+	const searchParam = searchTerm
+		? `&search=${encodeURIComponent(searchTerm)}`
+		: "";
 	try {
 		let posts = await getPosts(
-			`per_page=${postsPerPage}&page=${currentPage}&${categoryParams}`
+			`per_page=${postsPerPage}&page=${currentPage}&${categoryParams}${searchParam}`
 		);
 		renderPosts(posts);
 		// Hide loaders
