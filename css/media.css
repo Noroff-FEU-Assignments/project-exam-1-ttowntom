@@ -17,6 +17,40 @@ Mobile media queries
 	.post-card {
 		max-width: 85vw;
 	}
+
+	/* Adjust timeline */
+	.timeline {
+		margin-top: 2rem;
+	}
+
+	.timeline::before {
+		left: 1rem;
+		top: 2rem;
+	}
+
+	.timeline-event {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.timeline-content {
+		margin-left: 3rem;
+		text-align: left;
+	}
+
+	.timeline-description {
+		display: flex;
+		flex-direction: row;
+		gap: 1rem;
+		padding: 0;
+		margin: 0;
+
+		& i {
+			width: 2.25rem;
+			height: 2.25rem;
+		}
+	}
 }
 
 @media (max-width: 802px) {
