@@ -26,6 +26,11 @@ async function route(path) {
 		case "/blog/post/index.html":
 			await loadPage("blogPost");
 			break;
+		case "/blog/category/":
+		case "/blog/category":
+		case "/blog/category/index.html":
+			await loadPage("blogCategory");
+			break;
 		case "/about/":
 		case "/about":
 		case "/about/index.html":

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Blog Category | CodeJourney.io</title>
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<meta name="author" content="CodeJourney.io" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+		<script
+			src="https://kit.fontawesome.com/8d12afa6e5.js"
+			crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="/css/index.css" />
+		<link rel="icon" href="/img/favicon.ico" />
+		<!-- Hotjar Tracking Code for CodeJourney -->
+		<script>
+			(function (h, o, t, j, a, r) {
+				h.hj =
+					h.hj ||
+					function () {
+						(h.hj.q = h.hj.q || []).push(arguments);
+					};
+				h._hjSettings = { hjid: 3840097, hjsv: 6 };
+				a = o.getElementsByTagName("head")[0];
+				r = o.createElement("script");
+				r.async = 1;
+				r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+				a.appendChild(r);
+			})(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
+		</script>
+		<script src="/js/index.js" type="module"></script>
+	</head>
+	<body>
+		<header id="header" class="header menu"></header>
+		<main class="">
+			<div class="hero" id="hero-blog">
+				<h1>Category: <span></span></h1>
+				<i class="fa-solid fa-box-archive"></i>
+				<p>
+					You're viewing posts from the category
+					<span id="category-name" class="code"></span>
+				</p>
+			</div>
+
+			<h2 class="text-center">Latest posts</h2>
+			<div id="main-loader" class="loader-wrapper">
+				<div class="loader"></div>
+			</div>
+
+			<div id="posts">
+				<!-- Rendered by JS  -->
+			</div>
+			<button id="btn-load-more" class="btn-accent-blue rounded display--none">
+				Load more
+			</button>
+
+			<div class="loader-wrapper posts-loader display--none">
+				<div class="loader posts-loader display--none"></div>
+			</div>
+
+			<div class="span2 flex-row flex-justify-center margin-top-2">
+				<a href="/blog/" class="btn-accent">Back to the blog</a>
+			</div>
+		</main>
+
+		<footer id="footer" class="footer"></footer>
+	</body>
+</html>

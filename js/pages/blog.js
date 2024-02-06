@@ -3,7 +3,6 @@ import { postCard } from "../components/buildPostCard.js";
 
 // Grab wrappers
 const postsWrapper = document.querySelector("#posts");
-const featuredWrapper = document.querySelector("#featured");
 const mainLoader = document.querySelector("#main-loader");
 const postsLoader = document.querySelectorAll(".posts-loader");
 const loadMoreBtn = document.querySelector("#btn-load-more");
