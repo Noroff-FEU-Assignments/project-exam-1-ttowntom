@@ -31,6 +31,11 @@ async function route(path) {
 		case "/blog/category/index.html":
 			await loadPage("blogCategory");
 			break;
+		case "/blog/post_tag/":
+		case "/blog/post_tag":
+		case "/blog/post_tag/index.html":
+			await loadPage("blogTag");
+			break;
 		case "/about/":
 		case "/about":
 		case "/about/index.html":
@@ -65,6 +70,7 @@ async function loadMenu() {
 
 	// Set active menu item
 	const path = location.pathname;
+	console.log(path);
 	const links = document.querySelectorAll(".main-menu-item");
 	links.forEach((link) => {
 		if (link.getAttribute("href") === path) {
