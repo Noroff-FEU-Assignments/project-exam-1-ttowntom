@@ -55,6 +55,15 @@ function formValidation() {
 		submitButton.classList.remove("btn-error");
 	}
 
+	// Event listener for input focus events
+	[nameInput, emailInput, subjectInput, messageInput].forEach((input) => {
+		input.addEventListener("focus", function () {
+			const errorField = this.nextElementSibling;
+			errorField.textContent = "";
+			errorField.classList.add("display--none");
+		});
+	});
+
 	// Event listener for form submission
 	form.addEventListener("submit", async function (event) {
 		event.preventDefault();
@@ -94,14 +103,23 @@ function formValidation() {
 		}
 	});
 
+	// Function to clear all error messages
+	function clearAllErrors() {
+		document.querySelectorAll(".error-msg").forEach((errorField) => {
+			errorField.textContent = "";
+			errorField.classList.add("display--none");
+		});
+	}
+
 	// Event listeners for input blur events
 	[nameInput, emailInput, subjectInput, messageInput].forEach((input) => {
 		input.addEventListener("blur", function () {
+			// Clear all errors before showing a new one
+			clearAllErrors();
+
 			const error = validateInput(this);
 			if (error) {
 				displayError(this, error);
-			} else {
-				clearError(this);
 			}
 		});
 	});
