@@ -1,58 +1,6 @@
 /********************************************************************************************
 Mobile media queries
 ********************************************************************************************/
-@media (max-width: 395px) {
-	.logo-title {
-		font-size: 1.5rem;
-	}
-
-	.header img {
-		max-width: 3rem;
-	}
-
-	.flex-row {
-		gap: 0.5rem;
-	}
-
-	.post-card {
-		max-width: 85vw;
-	}
-
-	/* Adjust timeline */
-	.timeline {
-		margin-top: 2rem;
-	}
-
-	.timeline::before {
-		left: 1rem;
-		top: 2rem;
-	}
-
-	.timeline-event {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-	}
-
-	.timeline-content {
-		margin-left: 3rem;
-		text-align: left;
-	}
-
-	.timeline-description {
-		display: flex;
-		flex-direction: row;
-		gap: 1rem;
-		padding: 0;
-		margin: 0;
-
-		& i {
-			width: 2.25rem;
-			height: 2.25rem;
-		}
-	}
-}
-
 @media (max-width: 802px) {
 	/* Change navigation functionality */
 	.menu-toggle {
@@ -133,5 +81,62 @@ Mobile media queries
 	/* Remove nav buttons on carousel */
 	.carousel-button {
 		display: none;
+	}
+}
+
+/* Extra tiny screens */
+@media (max-width: 395px) {
+	.logo-title {
+		font-size: 1.5rem;
+	}
+
+	.header img {
+		max-width: 3rem;
+	}
+
+	.flex-row {
+		gap: 0.5rem;
+	}
+
+	.post-card {
+		max-width: 85vw;
+	}
+
+	.hero i {
+		display: none;
+	}
+
+	/* Adjust timeline */
+	.timeline {
+		margin-top: 2rem;
+	}
+
+	.timeline::before {
+		left: 1rem;
+		top: 2rem;
+	}
+
+	.timeline-event {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.timeline-content {
+		margin-left: 3rem;
+		text-align: left;
+	}
+
+	.timeline-description {
+		display: flex;
+		flex-direction: row;
+		gap: 1rem;
+		padding: 0;
+		margin: 0;
+
+		& i {
+			width: 2.25rem;
+			height: 2.25rem;
+		}
 	}
 }
