@@ -69,12 +69,14 @@ async function loadMenu() {
 	document.getElementById("header").innerHTML = menuHtml;
 
 	// Set active menu item
-	const path = location.pathname;
-	console.log(path);
+	const path = location.pathname.split("/")[1]; // Splits the pathname and get the first directory, accounting for sub-directories
 	const links = document.querySelectorAll(".main-menu-item");
 	links.forEach((link) => {
-		if (link.getAttribute("href") === path) {
+		const linkPath = link.getAttribute("href").split("/")[1]; // Do the same split for the href attribute of each link
+		if (linkPath === path) {
 			link.classList.add("active");
+		} else {
+			link.classList.remove("active");
 		}
 	});
 
