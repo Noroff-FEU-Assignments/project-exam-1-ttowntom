@@ -97,6 +97,10 @@ Typography
 	text-align: center;
 }
 
+.text-no-max-width {
+	max-width: none;
+}
+
 .text-right {
 	text-align: right;
 }
