@@ -210,27 +210,47 @@ Forms
 ********************************************************************************************/
 input,
 textarea {
+	margin-top: 0.25rem;
 	background-color: var(--clr-black);
 	border: 1px solid var(--clr-grey-desat);
 	border-left: 4px solid var(--clr-orange);
+	color: var(--clr-white);
 	width: 100%;
 	border-radius: 5px;
 	padding: 0.5rem;
 
 	&:is(:focus, :active) {
-		border: 1px solid var(--clr-grey);
-		border-left: 4px solid var(--clr-blue-accent-dark);
+		border: 1px solid var(--clr-white);
+		border-left: 4px solid var(--clr-blue-accent);
+		outline: none;
+	}
+}
+
+#search {
+	margin-top: 0;
+
+	&:is(:focus, :active) {
+		border: 1px solid var(--clr-blue-accent-dark);
+		border-left: 4px solid var(--clr-blue-accent);
 	}
 }
 
 textarea {
 	min-height: 10rem;
+	color: var(--clr-white);
+}
+
+label {
+	color: var(--clr-orange);
+	font-family: var(--ff-accent);
+	font-size: 0.85rem;
 }
 
 #contact-form {
 	display: grid;
 	gap: 1rem;
 	grid-template-columns: 1fr 1fr;
+	align-items: start;
 
 	& .span2 {
 		grid-column: span 2;

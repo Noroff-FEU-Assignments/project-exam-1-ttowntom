@@ -55,6 +55,15 @@ function formValidation() {
 		submitButton.classList.remove("btn-error");
 	}
 
+	// Event listener for input focus events
+	[nameInput, emailInput, subjectInput, messageInput].forEach((input) => {
+		input.addEventListener("focus", function () {
+			const errorField = this.nextElementSibling;
+			errorField.textContent = "";
+			errorField.classList.add("display--none");
+		});
+	});
+
 	// Event listener for form submission
 	form.addEventListener("submit", async function (event) {
 		event.preventDefault();
