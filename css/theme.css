@@ -333,8 +333,12 @@ ol {
 		list-style: circle;
 
 		&:not(:last-of-type) {
-			margin-bottom: 0.25rem;
+			margin-bottom: 0.5rem;
 		}
+	}
+
+	& li::marker {
+		color: var(--clr-orange);
 	}
 }
 
