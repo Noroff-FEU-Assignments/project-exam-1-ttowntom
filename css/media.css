@@ -13,6 +13,10 @@ Mobile media queries
 	.flex-row {
 		gap: 0.5rem;
 	}
+
+	.post-card {
+		max-width: 85vw;
+	}
 }
 
 @media (max-width: 802px) {

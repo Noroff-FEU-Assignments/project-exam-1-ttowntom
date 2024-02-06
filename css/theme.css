@@ -419,7 +419,8 @@ a {
 	}
 }
 
-code {
+code,
+.code {
 	font-family: var(--ff-accent);
 	color: var(--clr-orange);
 	font-size: 0.9rem;

@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<title>Blog | CodeJourney.io</title>
+		<title>Blog Category | CodeJourney.io</title>
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<meta name="author" content="CodeJourney.io" />
@@ -37,41 +37,12 @@
 		<header id="header" class="header menu"></header>
 		<main class="">
 			<div class="hero" id="hero-blog">
-				<h1>Blog posts</h1>
-				<i class="fa-solid fa-blog"></i>
+				<h1>Tag: <span></span></h1>
+				<i class="fa-solid fa-tags"></i>
 				<p>
-					From the nitty-gritty of coding to the expansive realm of tech trends,
-					practical how-tos, and reflective pieces that are not just about
-					coding, but about the journey of a developer.
+					You're viewing posts tagged with
+					<span id="tag-name" class="code"></span>
 				</p>
-			</div>
-			<!-- <h2 class="text-center">Featured posts</h2>
-			<div id="featured"> -->
-			<!-- Rendered by JS  -->
-			<!-- </div> -->
-
-			<div class="filter">
-				<div class="filter-categories">
-					<button class="btn-accent-blue category active" data-category="all">
-						All
-					</button>
-					<button class="btn-accent-blue category" data-category="160">
-						Dev
-					</button>
-					<button class="btn-accent-blue category" data-category="102">
-						Tools
-					</button>
-					<button class="btn-accent-blue category" data-category="124">
-						Projects
-					</button>
-					<button class="btn-accent-blue category" data-category="112">
-						Life
-					</button>
-				</div>
-				<div class="filter-search">
-					<input type="text" id="search" placeholder="Search for a post..." />
-					<button class="btn-accent-blue">Search</button>
-				</div>
 			</div>
 
 			<h2 class="text-center">Latest posts</h2>
@@ -88,6 +59,10 @@
 
 			<div class="loader-wrapper posts-loader display--none">
 				<div class="loader posts-loader display--none"></div>
+			</div>
+
+			<div class="span2 flex-row flex-justify-center margin-top-2">
+				<a href="/blog/" class="btn-accent">Back to the blog</a>
 			</div>
 		</main>
 

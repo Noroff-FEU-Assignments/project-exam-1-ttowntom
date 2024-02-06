@@ -26,6 +26,16 @@ async function route(path) {
 		case "/blog/post/index.html":
 			await loadPage("blogPost");
 			break;
+		case "/blog/category/":
+		case "/blog/category":
+		case "/blog/category/index.html":
+			await loadPage("blogCategory");
+			break;
+		case "/blog/post_tag/":
+		case "/blog/post_tag":
+		case "/blog/post_tag/index.html":
+			await loadPage("blogTag");
+			break;
 		case "/about/":
 		case "/about":
 		case "/about/index.html":
@@ -35,6 +45,11 @@ async function route(path) {
 		case "/contact":
 		case "/contact/index.html":
 			await loadPage("contact");
+			break;
+		case "/contact/success/":
+		case "/contact/success":
+		case "/contact/success/index.html":
+			await loadPage("contactSuccess");
 			break;
 		default:
 			await loadPage("notFound"); // Might want to redirect to 404 page here
@@ -54,11 +69,14 @@ async function loadMenu() {
 	document.getElementById("header").innerHTML = menuHtml;
 
 	// Set active menu item
-	const path = location.pathname;
+	const path = location.pathname.split("/")[1]; // Splits the pathname and get the first directory, accounting for sub-directories
 	const links = document.querySelectorAll(".main-menu-item");
 	links.forEach((link) => {
-		if (link.getAttribute("href") === path) {
+		const linkPath = link.getAttribute("href").split("/")[1]; // Do the same split for the href attribute of each link
+		if (linkPath === path) {
 			link.classList.add("active");
+		} else {
+			link.classList.remove("active");
 		}
 	});
 

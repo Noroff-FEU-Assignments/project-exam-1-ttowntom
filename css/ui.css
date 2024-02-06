@@ -16,6 +16,7 @@ Blog posts
 .post-card {
 	display: flex;
 	flex-direction: column;
+	max-width: 100%;
 	height: 100%;
 	background-color: var(--clr-black);
 	border-radius: 5px;
@@ -155,6 +156,53 @@ Blog posts carousel
 
 .carousel-dot.active {
 	background-color: var(--clr-white);
+}
+
+/********************************************************************************************
+Blog filters
+********************************************************************************************/
+.filter {
+	margin-inline: auto;
+	max-width: max-content;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 1rem;
+	margin-bottom: 2rem;
+}
+
+.filter-categories {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+
+	& > * {
+		margin-block: 0;
+	}
+}
+
+.filter-search {
+	display: grid;
+	grid-template-columns: 1fr auto;
+
+	& input {
+		border-left: 4px solid var(--clr-blue-accent-dark);
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+
+	& button {
+		margin-left: -0.25rem;
+		margin-block: 0;
+		padding-block: 0.25rem;
+		background-color: var(--clr-black);
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+
+		&:is(:hover, :active) {
+			background-color: var(--clr-black);
+		}
+	}
 }
 
 /********************************************************************************************

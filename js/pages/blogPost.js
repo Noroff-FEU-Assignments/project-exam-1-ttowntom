@@ -74,7 +74,7 @@ function buildPost(post) {
 					const element = document.createElement("a");
 					element.classList.add(className);
 					element.textContent = item.name;
-					element.href = `/${taxonomyType}.html?id=${item.id}`;
+					element.href = `/blog/${taxonomyType}/?${taxonomyType}=${item.id}&name=${item.name}`;
 					elements.push(element);
 				}
 			}

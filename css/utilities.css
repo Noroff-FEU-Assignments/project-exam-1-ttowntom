@@ -19,6 +19,14 @@ Sections
 	justify-content: flex-end;
 }
 
+.flex-justify-start {
+	justify-content: flex-start;
+}
+
+.flex-justify-center {
+	justify-content: center;
+}
+
 .margin-bottom-2 {
 	margin-bottom: 2rem;
 }
@@ -89,6 +97,10 @@ Typography
 	text-align: center;
 }
 
+.text-no-max-width {
+	max-width: none;
+}
+
 .text-right {
 	text-align: right;
 }
@@ -99,6 +111,11 @@ Typography
 
 .faq-answer:not(:last-of-type) {
 	margin-bottom: 1rem;
+}
+
+.big-font {
+	margin-top: 3rem;
+	font-size: 4rem;
 }
 /********************************************************************************************
 Elements
@@ -123,6 +140,14 @@ Elements
 	clip-path: inset(100%);
 	clip: rect(0 0 0 0);
 	overflow: hidden;
+}
+
+.margin-top-2 {
+	margin-top: 2rem;
+}
+
+.margin-center {
+	margin-inline: auto;
 }
 
 /********************************************************************************************
@@ -171,4 +196,8 @@ Displays
 ********************************************************************************************/
 .display--none {
 	display: none;
+}
+
+.display-block {
+	display: block;
 }
