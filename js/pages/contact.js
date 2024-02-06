@@ -103,14 +103,23 @@ function formValidation() {
 		}
 	});
 
+	// Function to clear all error messages
+	function clearAllErrors() {
+		document.querySelectorAll(".error-msg").forEach((errorField) => {
+			errorField.textContent = "";
+			errorField.classList.add("display--none");
+		});
+	}
+
 	// Event listeners for input blur events
 	[nameInput, emailInput, subjectInput, messageInput].forEach((input) => {
 		input.addEventListener("blur", function () {
+			// Clear all errors before showing a new one
+			clearAllErrors();
+
 			const error = validateInput(this);
 			if (error) {
 				displayError(this, error);
-			} else {
-				clearError(this);
 			}
 		});
 	});
