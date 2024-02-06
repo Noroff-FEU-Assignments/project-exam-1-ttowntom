@@ -79,14 +79,14 @@ function formValidation() {
 			postContactForm(formId, formData)
 				.then((data) => {
 					// Handle success
-					window.location.href = "/success/";
+					window.location.href = "/contact/success/";
 				})
 				.catch((error) => {
 					// Handle failure
 					console.error("Error submitting form:", error);
 
 					// Error is expected as I host the WP myself and have not setup email sending, thus a faky-fake success is in order 😜
-					window.location.href = "/success/";
+					window.location.href = "/contact/success/";
 
 					// Under normal conditions, the form would be shown again with an error message
 					// hideLoaderShowForm();

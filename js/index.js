@@ -36,6 +36,11 @@ async function route(path) {
 		case "/contact/index.html":
 			await loadPage("contact");
 			break;
+		case "/contact/success/":
+		case "/contact/success":
+		case "/contact/success/index.html":
+			await loadPage("contactSuccess");
+			break;
 		default:
 			await loadPage("notFound"); // Might want to redirect to 404 page here
 	}
