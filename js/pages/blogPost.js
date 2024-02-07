@@ -119,6 +119,12 @@ function buildPost(post) {
 			}
 		});
 
+		// Save li markers from going off screen
+		const liItems = doc.querySelectorAll("li");
+		liItems.forEach((li) => {
+			li.classList.add("padding-left-1");
+		});
+
 		// Serialize the document back to a string
 		const serializer = new XMLSerializer();
 		const serializedContent = serializer.serializeToString(doc);
