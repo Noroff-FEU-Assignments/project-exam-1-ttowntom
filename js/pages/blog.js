@@ -95,9 +95,34 @@ async function loadPosts(categoryParams = "", searchTerm = "") {
 		let posts = await getPosts(
 			`per_page=${postsPerPage}&page=${currentPage}&${categoryParams}${searchParam}`
 		);
-		renderPosts(posts);
-		// Hide loaders
-		postsLoader.forEach((loader) => loader.classList.add("display--none"));
+		// Handle no posts
+		if (posts.length === 0) {
+			// Hide loaders and change header text
+			postsLoader.forEach((loader) => loader.classList.add("display--none"));
+			const h2 = document.querySelector("h2");
+			h2.textContent = "No posts found";
+			// Build no posts message
+			const noPostsWrapper = document.createElement("div");
+			noPostsWrapper.classList.add("content-grid");
+
+			const noPostsMessage = document.createElement("p");
+			noPostsMessage.classList.add("text-center", "big-font");
+			noPostsMessage.textContent = "🧐";
+			noPostsWrapper.appendChild(noPostsMessage);
+
+			const noPostsText = document.createElement("p");
+			noPostsText.classList.add("text-center", "text-no-max-width");
+			noPostsText.textContent =
+				"The alien server-keeper has looked all throughout the database, but has come up empty-handed. No posts found.";
+			noPostsWrapper.appendChild(noPostsText);
+
+			postsWrapper.appendChild(noPostsWrapper);
+		} else {
+			// Render posts
+			renderPosts(posts);
+			// Hide loaders
+			postsLoader.forEach((loader) => loader.classList.add("display--none"));
+		}
 	} catch (error) {
 		console.error("Error fetching posts:", error);
 	}
