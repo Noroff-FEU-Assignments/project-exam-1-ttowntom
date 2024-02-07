@@ -83,6 +83,9 @@ function formValidation() {
 		if (isFormValid) {
 			showLoaderHideForm();
 			const formData = new FormData(form);
+			// Add unit tag to form data
+			formData.append(" _wpcf7_unit_tag", "randomTagName");
+
 			const formId = 162;
 
 			postContactForm(formId, formData)
@@ -108,6 +111,7 @@ function formValidation() {
 		document.querySelectorAll(".error-msg").forEach((errorField) => {
 			errorField.textContent = "";
 			errorField.classList.add("display--none");
+			submitButton.classList.remove("btn-error");
 		});
 	}
 
