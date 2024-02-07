@@ -1,6 +1,50 @@
 import { getPost } from "/js/api/index.js";
 
 ///////////////////////////////////////////////////////////////
+// Grab meta tags
+const postTitle = document.querySelector("title");
+const postDescription = document.querySelector('meta[name="description"]');
+const postKeywords = document.querySelector('meta[name="keywords"]');
+const postOgTitle = document.querySelector('meta[property="og:title"]');
+const postOgDescription = document.querySelector(
+	'meta[property="og:description"]'
+);
+const postOgImage = document.querySelector('meta[property="og:image"]');
+const postOgUrl = document.querySelector('meta[property="og:url"]');
+const postTwitterTitle = document.querySelector('meta[name="twitter:title"]');
+const postTwitterDescription = document.querySelector(
+	'meta[name="twitter:description"]'
+);
+const postTwitterImage = document.querySelector('meta[name="twitter:image"]');
+
+// Set meta tags
+function setMetaTags(post) {
+	const title = post.title.rendered + " | CodeJourney.io";
+	const description = post.excerpt.rendered.replace(/<[^>]*>?/gm, "");
+	const postImage = post._embedded["wp:featuredmedia"][0].source_url;
+
+	postTitle.textContent = title;
+	postDescription.setAttribute("content", description);
+	// Loop over taxonomy array and set keywords from category and tags
+	let keywords = "";
+	for (let i = 0; i < post._embedded["wp:term"].length; i++) {
+		let taxonomyArray = post._embedded["wp:term"][i];
+		for (let j = 0; j < taxonomyArray.length; j++) {
+			let item = taxonomyArray[j];
+			keywords += item.name + ", ";
+		}
+	}
+	postKeywords.setAttribute("content", keywords);
+	postOgTitle.setAttribute("content", title);
+	postOgDescription.setAttribute("content", description);
+	postOgImage.setAttribute("content", postImage);
+	postOgUrl.setAttribute("content", window.location.href);
+	postTwitterTitle.setAttribute("content", title);
+	postTwitterDescription.setAttribute("content", description);
+	postTwitterImage.setAttribute("content", postImage);
+}
+
+///////////////////////////////////////////////////////////////
 // Grab wrappers
 const postHero = document.querySelector("#hero-blog-post");
 const postDate = document.querySelector(".post-date");
@@ -17,6 +61,7 @@ async function loadPost(id) {
 		buildPost(post);
 		loader.remove();
 		postHero.style.borderColor = "var(--clr-grey-desat)";
+		setMetaTags(post);
 		openModal();
 	} catch (error) {
 		console.log(`Error fetching post with id ${id}: `, error);

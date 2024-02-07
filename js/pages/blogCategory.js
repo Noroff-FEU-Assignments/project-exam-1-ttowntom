@@ -2,6 +2,15 @@ import { getPosts } from "/js/api/getPosts.js";
 import { postCard } from "../components/buildPostCard.js";
 
 ///////////////////////////////////////////////////////////////
+// Grab meta tags
+const postOgUrl = document.querySelector('meta[property="og:url"]');
+
+// Set meta tags
+function setMetaTags() {
+	postOgUrl.setAttribute("content", window.location.href);
+}
+
+///////////////////////////////////////////////////////////////
 // Grab wrappers
 const heroTitle = document.querySelector(".hero h1 span");
 const categoryTitle = document.querySelector("#category-name");
@@ -34,6 +43,7 @@ async function loadPosts() {
 		renderPosts(posts);
 		// Hide loaders
 		postsLoader.forEach((loader) => loader.classList.add("display--none"));
+		setMetaTags();
 	} catch (error) {
 		console.error("Error fetching posts:", error);
 	}
