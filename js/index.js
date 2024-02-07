@@ -6,7 +6,9 @@ async function loadPage(page) {
 		module.default();
 	} catch (error) {
 		console.error("Error loading the page:", error);
-		// Might want to redirect to 404 page here
+		// Redirect to 404 page
+		console.log("Redirecting to 404 page");
+		await loadPage("404");
 	}
 }
 
@@ -52,7 +54,8 @@ async function route(path) {
 			await loadPage("contactSuccess");
 			break;
 		default:
-			await loadPage("notFound"); // Might want to redirect to 404 page here
+			console.log("Page not found from switch case:", path);
+			await loadPage("notFound");
 	}
 }
 
