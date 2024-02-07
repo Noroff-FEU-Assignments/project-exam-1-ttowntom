@@ -113,8 +113,17 @@ async function loadPosts(categoryParams = "", searchTerm = "") {
 			const noPostsText = document.createElement("p");
 			noPostsText.classList.add("text-center", "text-no-max-width");
 			noPostsText.textContent =
-				"The alien server-keeper has looked all throughout the database, but has come up empty-handed. No posts found.";
+				"The alien server-keeper has looked all throughout the database, but has come up empty-handed.";
 			noPostsWrapper.appendChild(noPostsText);
+
+			const noPostsStatement = document.createElement("p");
+			noPostsStatement.classList.add(
+				"code",
+				"text-center",
+				"text-no-max-width"
+			);
+			noPostsStatement.textContent = "¯\\_(ツ)_/¯";
+			noPostsWrapper.appendChild(noPostsStatement);
 
 			postsWrapper.appendChild(noPostsWrapper);
 		} else {
