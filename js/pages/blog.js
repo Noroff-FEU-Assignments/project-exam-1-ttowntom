@@ -116,15 +116,16 @@ async function loadPosts(categoryParams = "", searchTerm = "") {
 				"The alien server-keeper has looked all throughout the database, but has come up empty-handed.";
 			noPostsWrapper.appendChild(noPostsText);
 
-			const noPostsStatement = document.createElement("p");
+			const noPostsStatement = document.createElement("i");
 			noPostsStatement.classList.add(
-				"code",
+				"fa-solid",
+				"fa-alien-8bit",
 				"text-center",
-				"text-no-max-width"
+				"text-no-max-width",
+				"big-font"
 			);
-			noPostsStatement.textContent = "¯\\_(ツ)_/¯";
+			noPostsStatement.style.color = "var(--clr-grey-desat)";
 			noPostsWrapper.appendChild(noPostsStatement);
-
 			postsWrapper.appendChild(noPostsWrapper);
 		} else {
 			// Render posts
