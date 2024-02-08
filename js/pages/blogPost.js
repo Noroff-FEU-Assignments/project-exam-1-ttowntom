@@ -1,4 +1,5 @@
-import { getPost } from "/js/api/index.js";
+import { getPost } from "/js/api/getPosts.js";
+import { postCommentForm } from "/js/api/postComment.js";
 
 ///////////////////////////////////////////////////////////////
 // Grab meta tags
@@ -55,9 +56,9 @@ const loader = document.querySelector(".loader-wrapper");
 const commentSection = document.querySelector("#comment-section");
 const comments = document.querySelector("#comments-list");
 const noComments = document.querySelector(".comments-empty");
-const commentForm = document.querySelector(".comment-form");
-const commentsLoader = document.querySelector(".comments-loader");
 const commentsHeader = document.querySelector(".comments-header");
+const commentForm = document.querySelector("#comment-form");
+const commentBtn = document.querySelector("#comment-btn");
 
 ///////////////////////////////////////////////////////////////
 // Get the blog post from server
@@ -200,7 +201,7 @@ function buildPost(post) {
 }
 
 ///////////////////////////////////////////////////////////////
-// Build comment section
+// Comment section
 
 // Function to convert date to "time ago"
 function timeAgo(dateParam) {
@@ -221,6 +222,42 @@ function timeAgo(dateParam) {
 	else return `${years} years ago`;
 }
 
+// Render comments to the DOM
+function buildComment(comment) {
+	// Create comment wrapper
+	const commentWrapper = document.createElement("div");
+	commentWrapper.classList.add("comment-wrapper");
+
+	// Create comment avatar
+	const commentAvatar = document.createElement("img");
+	commentAvatar.classList.add("comment-avatar");
+	commentAvatar.src = comment.author_avatar_urls["96"];
+	commentAvatar.alt = comment.author_name + " avatar";
+	commentWrapper.appendChild(commentAvatar);
+
+	// Create comment meta
+	const commentMeta = document.createElement("div");
+	commentMeta.classList.add("comment-meta");
+	// Create comment author
+	const commentAuthor = document.createElement("h3");
+	commentAuthor.innerText = comment.author_name;
+	commentMeta.appendChild(commentAuthor);
+	// Create comment date
+	const commentDate = document.createElement("p");
+	commentDate.innerText = timeAgo(comment.date);
+	commentMeta.appendChild(commentDate);
+	commentWrapper.appendChild(commentMeta);
+
+	// Create comment content
+	const commentContent = document.createElement("div");
+	commentContent.classList.add("comment-content");
+	commentContent.innerHTML = comment.content.rendered;
+	commentWrapper.appendChild(commentContent);
+
+	comments.appendChild(commentWrapper);
+}
+
+// Render existing comments on page load
 function buildCommentSection(post) {
 	// Build comments list
 	commentSection.classList.remove("display--none");
@@ -232,38 +269,33 @@ function buildCommentSection(post) {
 		// There are comments on this post
 		// Build comments list
 		post._embedded.replies[0].forEach((comment) => {
-			// Create comment wrapper
-			const commentWrapper = document.createElement("div");
-			commentWrapper.classList.add("comment-wrapper");
-
-			// Create comment avatar
-			const commentAvatar = document.createElement("img");
-			commentAvatar.classList.add("comment-avatar");
-			commentAvatar.src = comment.author_avatar_urls["96"];
-			commentAvatar.alt = comment.author_name + " avatar";
-			commentWrapper.appendChild(commentAvatar);
-
-			// Create comment meta
-			const commentMeta = document.createElement("div");
-			commentMeta.classList.add("comment-meta");
-			// Create comment author
-			const commentAuthor = document.createElement("h3");
-			commentAuthor.innerText = comment.author_name;
-			commentMeta.appendChild(commentAuthor);
-			// Create comment date
-			const commentDate = document.createElement("p");
-			commentDate.innerText = timeAgo(comment.date);
-			commentMeta.appendChild(commentDate);
-			commentWrapper.appendChild(commentMeta);
-
-			// Create comment content
-			const commentContent = document.createElement("div");
-			commentContent.classList.add("comment-content");
-			commentContent.innerHTML = comment.content.rendered;
-			commentWrapper.appendChild(commentContent);
-
-			comments.appendChild(commentWrapper);
+			buildComment(comment);
 		});
+	}
+}
+
+// Add event listener to comment form
+commentForm.addEventListener("submit", (e) => {
+	e.preventDefault();
+	// Get query string from the URL
+	const queryString = window.location.search;
+	const urlParams = new URLSearchParams(queryString);
+	const postId = urlParams.get("id");
+
+	// Create new FormData object
+	const formData = new FormData(commentForm);
+	formData.append("post", postId);
+	comment(formData);
+	console.log("Comment form submitted");
+});
+
+// POST comment and render to the DOM
+async function comment(formData) {
+	try {
+		let commentResponse = await postCommentForm(formData);
+		buildComment(commentResponse);
+	} catch (error) {
+		console.log(`Error: `, error);
 	}
 }
 
@@ -274,7 +306,7 @@ function openModal() {
 	var modal = document.querySelector("#image-modal");
 	var modalWrapper = document.querySelector(".modal-wrapper");
 
-	// Get the image and insert it inside the modal - use its "alt" text as a caption
+	// Get the image and insert it inside the modal
 	var modalImg = document.querySelector("#modal-image");
 	var captionText = document.querySelector(".modal-caption");
 

@@ -91,7 +91,7 @@ Blog posts comments
 
 .comment-wrapper {
 	display: grid;
-	gap: 2rem;
+	gap: 1rem;
 	grid-template-columns: 4rem 1fr;
 	grid-template-areas: "avatar meta" "avatar comment";
 	border: 1px solid var(--clr-grey-desat);

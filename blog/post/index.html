@@ -113,14 +113,14 @@
 					</div>
 				</div>
 
-				<div class="comment-form">
+				<div class="comment-form-wrapper">
 					<h2>Leave a comment</h2>
 					<form id="comment-form">
 						<div class="span3">
 							<label for="comment">Comment</label>
 							<textarea
 								id="comment"
-								name="comment"
+								name="content"
 								placeholder="Your comment.."
 								required></textarea>
 						</div>
@@ -129,7 +129,7 @@
 							<input
 								type="text"
 								id="name"
-								name="name"
+								name="author_name"
 								placeholder="Your name"
 								required />
 						</div>
@@ -138,11 +138,14 @@
 							<input
 								type="email"
 								id="email"
-								name="email"
+								name="author_email"
 								placeholder="Your email"
 								required />
 						</div>
-						<button type="submit" class="btn-accent span3-mobile">
+						<button
+							id="#comment-btn"
+							type="submit"
+							class="btn-accent span3-mobile">
 							Comment
 						</button>
 					</form>
