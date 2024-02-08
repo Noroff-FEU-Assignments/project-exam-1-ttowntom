@@ -40,7 +40,6 @@ Mobile media queries
 
 	/* Re-configure the footer */
 	footer {
-		/* grid-template-rows: repeat(auto, 1fr); */
 		grid-template-columns: 1fr;
 		justify-items: center;
 		gap: 1rem;
@@ -70,7 +69,7 @@ Mobile media queries
 
 	/* Re-configure the comments section */
 	.comment-wrapper {
-		grid-template-areas: "avatar meta" "comment comment";
+		grid-template-areas: "avatar meta" "comment comment";}
 
 		#comment-form {
 			& button {
