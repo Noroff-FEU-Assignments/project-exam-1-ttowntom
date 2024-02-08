@@ -1,4 +1,5 @@
-import { getPost } from "/js/api/index.js";
+import { getPost } from "/js/api/getPosts.js";
+import { postCommentForm } from "/js/api/postComment.js";
 
 ///////////////////////////////////////////////////////////////
 // Grab meta tags
@@ -52,6 +53,12 @@ const postCategories = document.querySelector(".post-categories");
 const postTags = document.querySelector(".post-tags");
 const postContent = document.querySelector(".post-content");
 const loader = document.querySelector(".loader-wrapper");
+const commentSection = document.querySelector("#comment-section");
+const comments = document.querySelector("#comments-list");
+const noComments = document.querySelector(".comments-empty");
+const commentsHeader = document.querySelector(".comments-header");
+const commentForm = document.querySelector("#comment-form");
+const formLoader = document.querySelector(".form-loader");
 
 ///////////////////////////////////////////////////////////////
 // Get the blog post from server
@@ -63,6 +70,7 @@ async function loadPost(id) {
 		postHero.style.borderColor = "var(--clr-grey-desat)";
 		setMetaTags(post);
 		openModal();
+		buildCommentSection(post);
 	} catch (error) {
 		console.log(`Error fetching post with id ${id}: `, error);
 	}
@@ -193,13 +201,139 @@ function buildPost(post) {
 }
 
 ///////////////////////////////////////////////////////////////
+// Comment section
+
+// Function to convert date to "time ago"
+function timeAgo(dateParam) {
+	const date = typeof dateParam === "object" ? dateParam : new Date(dateParam);
+	const now = new Date();
+	const seconds = Math.round((now - date) / 1000);
+	const minutes = Math.round(seconds / 60);
+	const hours = Math.round(minutes / 60);
+	const days = Math.round(hours / 24);
+	const months = Math.round(days / 30.4); // Average month in days
+	const years = Math.round(days / 365);
+
+	if (seconds < 60) return "Just now";
+	else if (minutes < 60) return `${minutes} minutes ago`;
+	else if (hours < 24) return `${hours} hours ago`;
+	else if (days < 30) return `${days} days ago`;
+	else if (months < 12) return `${months} months ago`;
+	else return `${years} years ago`;
+}
+
+// Render comments to the DOM
+function buildComment(comment, placement = "append") {
+	// Create comment wrapper
+	const commentWrapper = document.createElement("div");
+	commentWrapper.classList.add("comment-wrapper");
+
+	// Create comment avatar
+	const commentAvatar = document.createElement("img");
+	commentAvatar.classList.add("comment-avatar");
+	commentAvatar.src = comment.author_avatar_urls["96"];
+	commentAvatar.alt = comment.author_name + " avatar";
+	commentWrapper.appendChild(commentAvatar);
+
+	// Create comment meta
+	const commentMeta = document.createElement("div");
+	commentMeta.classList.add("comment-meta");
+	// Create comment author
+	const commentAuthor = document.createElement("h3");
+	commentAuthor.innerText = comment.author_name;
+	commentMeta.appendChild(commentAuthor);
+	// Create comment date
+	const commentDate = document.createElement("p");
+	commentDate.innerText = timeAgo(comment.date);
+	commentMeta.appendChild(commentDate);
+	commentWrapper.appendChild(commentMeta);
+
+	// Create comment content
+	const commentContent = document.createElement("div");
+	commentContent.classList.add("comment-content");
+	commentContent.innerHTML = comment.content.rendered;
+	commentWrapper.appendChild(commentContent);
+
+	// Append comment to the DOM
+	if (placement === "prepend") {
+		comments.prepend(commentWrapper);
+	} else {
+		comments.appendChild(commentWrapper);
+	}
+}
+
+// Render existing comments on page load
+let postHasComments = false;
+function buildCommentSection(post) {
+	// Build comments list
+	commentSection.classList.remove("display--none");
+	if (!post._embedded.replies) {
+		// There are no comments on this post
+		commentsHeader.textContent = "No comments yet";
+		noComments.classList.remove("display--none");
+	} else {
+		postHasComments = true;
+		// Build comments list
+		post._embedded.replies[0].forEach((comment) => {
+			buildComment(comment);
+		});
+	}
+}
+
+// Add event listener to comment submit button
+commentForm.addEventListener("submit", (e) => {
+	e.preventDefault();
+	// Get query string from the URL
+	const queryString = window.location.search;
+	const urlParams = new URLSearchParams(queryString);
+	const postId = urlParams.get("id");
+
+	// Create new FormData object
+	const formData = new FormData(commentForm);
+	formData.append("post", postId);
+	comment(formData);
+	// Hide form, show loader
+	commentForm.classList.add("display--none");
+	commentForm.style.display = "none";
+	commentForm.reset();
+	formLoader.classList.remove("display--none");
+});
+
+// POST comment and render to the DOM
+async function comment(formData) {
+	try {
+		let commentResponse = await postCommentForm(formData);
+		// There are comments on this post
+		postHasComments = true;
+
+		// Hide loader, show form
+		formLoader.classList.add("display--none");
+		commentForm.style.display = "grid";
+
+		// The post has comments now
+		if (postHasComments) {
+			commentsHeader.textContent = "Comments";
+			noComments.classList.add("display--none");
+		}
+
+		// Render the new comment to the DOM
+		buildComment(commentResponse, "prepend");
+
+		// Scroll to the new comment
+		commentSection.scrollIntoView({ behavior: "smooth" });
+	} catch (error) {
+		console.log(`Error: `, error);
+	}
+}
+
+///////////////////////////////////////////////////////////////
 // Function to open images in modal
 function openModal() {
 	// Get the modal
 	var modal = document.querySelector("#image-modal");
 	var modalWrapper = document.querySelector(".modal-wrapper");
 
-	// Get the image and insert it inside the modal - use its "alt" text as a caption
+	// Get the image and insert it inside the modal
 	var modalImg = document.querySelector("#modal-image");
 	var captionText = document.querySelector(".modal-caption");
 

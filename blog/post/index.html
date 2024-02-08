@@ -95,6 +95,64 @@
 			</div>
 			<div class="post-content content-grid"><!-- Rendered by JS  --></div>
 			<div class="post-tags content-grid"><!-- Rendered by JS  --></div>
+
+			<section id="comment-section" class="content-grid display--none">
+				<div class="breakout hr"></div>
+				<div class="comments">
+					<h2 class="comments-header">Comments</h2>
+					<div class="comments-empty display--none">
+						<div class="no-comments">
+							<i
+								class="fa-solid fa-alien-8bit text-no-max-width big-font"
+								style="color: var(--clr-grey-desat)"
+								aria-hidden="true"></i>
+						</div>
+					</div>
+					<div id="comments-list">
+						<!-- Rendered by JS  -->
+					</div>
+				</div>
+
+				<div class="comment-form-wrapper">
+					<h2>Leave a comment</h2>
+					<form id="comment-form">
+						<div class="span3">
+							<label for="comment">Comment</label>
+							<textarea
+								id="comment"
+								name="content"
+								placeholder="Your comment.."
+								required></textarea>
+						</div>
+						<div class="span3-mobile">
+							<label for="name">Name</label>
+							<input
+								type="text"
+								id="name"
+								name="author_name"
+								placeholder="Your name"
+								required />
+						</div>
+						<div class="span3-mobile">
+							<label for="email">Email</label>
+							<input
+								type="email"
+								id="email"
+								name="author_email"
+								placeholder="Your email" />
+						</div>
+						<button
+							id="#comment-btn"
+							type="submit"
+							class="btn-accent span3-mobile">
+							Comment
+						</button>
+					</form>
+					<div class="loader-wrapper form-loader display--none">
+						<div class="loader"></div>
+					</div>
+				</div>
+			</section>
 		</main>
 		<footer id="footer" class="footer"></footer>
 	</body>
