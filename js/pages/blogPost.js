@@ -52,6 +52,12 @@ const postCategories = document.querySelector(".post-categories");
 const postTags = document.querySelector(".post-tags");
 const postContent = document.querySelector(".post-content");
 const loader = document.querySelector(".loader-wrapper");
+const commentSection = document.querySelector("#comment-section");
+const comments = document.querySelector("#comments-list");
+const noComments = document.querySelector(".comments-empty");
+const commentForm = document.querySelector(".comment-form");
+const commentsLoader = document.querySelector(".comments-loader");
+const commentsHeader = document.querySelector(".comments-header");
 
 ///////////////////////////////////////////////////////////////
 // Get the blog post from server
@@ -63,6 +69,7 @@ async function loadPost(id) {
 		postHero.style.borderColor = "var(--clr-grey-desat)";
 		setMetaTags(post);
 		openModal();
+		buildCommentSection(post);
 	} catch (error) {
 		console.log(`Error fetching post with id ${id}: `, error);
 	}
@@ -190,6 +197,74 @@ function buildPost(post) {
 	}
 
 	postContent.innerHTML = cleanContent(tempContent);
+}
+
+///////////////////////////////////////////////////////////////
+// Build comment section
+
+// Function to convert date to "time ago"
+function timeAgo(dateParam) {
+	const date = typeof dateParam === "object" ? dateParam : new Date(dateParam);
+	const now = new Date();
+	const seconds = Math.round((now - date) / 1000);
+	const minutes = Math.round(seconds / 60);
+	const hours = Math.round(minutes / 60);
+	const days = Math.round(hours / 24);
+	const months = Math.round(days / 30.4); // Average month in days
+	const years = Math.round(days / 365);
+
+	if (seconds < 60) return "Just now";
+	else if (minutes < 60) return `${minutes} minutes ago`;
+	else if (hours < 24) return `${hours} hours ago`;
+	else if (days < 30) return `${days} days ago`;
+	else if (months < 12) return `${months} months ago`;
+	else return `${years} years ago`;
+}
+
+function buildCommentSection(post) {
+	// Build comments list
+	commentSection.classList.remove("display--none");
+	if (!post._embedded.replies) {
+		// There are no comments on this post
+		commentsHeader.textContent = "No comments yet";
+		noComments.classList.remove("display--none");
+	} else {
+		// There are comments on this post
+		// Build comments list
+		post._embedded.replies[0].forEach((comment) => {
+			// Create comment wrapper
+			const commentWrapper = document.createElement("div");
+			commentWrapper.classList.add("comment-wrapper");
+
+			// Create comment avatar
+			const commentAvatar = document.createElement("img");
+			commentAvatar.classList.add("comment-avatar");
+			commentAvatar.src = comment.author_avatar_urls["96"];
+			commentAvatar.alt = comment.author_name + " avatar";
+			commentWrapper.appendChild(commentAvatar);
+
+			// Create comment meta
+			const commentMeta = document.createElement("div");
+			commentMeta.classList.add("comment-meta");
+			// Create comment author
+			const commentAuthor = document.createElement("h3");
+			commentAuthor.innerText = comment.author_name;
+			commentMeta.appendChild(commentAuthor);
+			// Create comment date
+			const commentDate = document.createElement("p");
+			commentDate.innerText = timeAgo(comment.date);
+			commentMeta.appendChild(commentDate);
+			commentWrapper.appendChild(commentMeta);
+
+			// Create comment content
+			const commentContent = document.createElement("div");
+			commentContent.classList.add("comment-content");
+			commentContent.innerHTML = comment.content.rendered;
+			commentWrapper.appendChild(commentContent);
+
+			comments.appendChild(commentWrapper);
+		});
+	}
 }
 
 ///////////////////////////////////////////////////////////////

@@ -85,6 +85,7 @@ Blog posts comments
 ********************************************************************************************/
 #comments-list {
 	display: flex;
+	flex-direction: column;
 	gap: 2rem;
 }
 
@@ -107,23 +108,27 @@ Blog posts comments
 	grid-area: avatar;
 }
 
-.comment-meta {
-	grid-area: meta;
-}
-
 .comment-content {
 	grid-area: comment;
 }
 
-.comment-avatar img {
-	border-radius: 50%;
+.comment-meta {
+	grid-area: meta;
+
+	& h3 {
+		margin-top: 0;
+	}
+
+	& p {
+		font-family: var(--ff-accent);
+		color: var(--clr-white);
+		font-size: 0.8rem;
+		margin-bottom: 0.5rem;
+	}
 }
 
-.comment-meta p {
-	font-family: var(--ff-accent);
-	color: var(--clr-white);
-	font-size: 0.8rem;
-	margin-bottom: 0.5rem;
+.comment-avatar {
+	border-radius: 50%;
 }
 
 #comment-form {
@@ -142,6 +147,17 @@ Blog posts comments
 	}
 
 	& h3 {
+		margin-bottom: 2rem;
+	}
+}
+
+.no-comments {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	& > i {
+		margin-top: 0.5rem;
 		margin-bottom: 2rem;
 	}
 }

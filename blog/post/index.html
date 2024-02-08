@@ -96,40 +96,25 @@
 			<div class="post-content content-grid"><!-- Rendered by JS  --></div>
 			<div class="post-tags content-grid"><!-- Rendered by JS  --></div>
 
-			<section id="comment-section" class="content-grid">
+			<section id="comment-section" class="content-grid display--none">
 				<div class="breakout hr"></div>
 				<div class="comments">
-					<h2>Comments</h2>
-					<div class="loader-wrapper display--none">
-						<div class="loader"></div>
+					<h2 class="comments-header">Comments</h2>
+					<div class="comments-empty display--none">
+						<div class="no-comments">
+							<i
+								class="fa-solid fa-alien-8bit text-no-max-width big-font"
+								style="color: var(--clr-grey-desat)"
+								aria-hidden="true"></i>
+						</div>
 					</div>
 					<div id="comments-list">
-						<div class="comment-wrapper">
-							<div class="comment-avatar">
-								<img src="/img/vecAvt.jpg" alt="" />
-							</div>
-							<div class="comment-meta">
-								<h2>John Doe</h2>
-								<p class="italic">January 1, 2024</p>
-							</div>
-							<div class="comment-content">
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-									Aliquam at porttitor sem. Aliquam erat volutpat. Donec
-									vehicula egestas venenatis. Nullam in diam nec arcu convallis
-									elementum. Nulla facilisi. Sed auctor ullamcorper libero, at
-									aliquet odio tincidunt non. Phasellus nec ultrices nunc. Nulla
-									facilisi. Sed auctor ullamcorper libero, at aliquet odio
-									tincidunt non. Phasellus nec ultrices nunc.
-								</p>
-							</div>
-						</div>
 						<!-- Rendered by JS  -->
 					</div>
 				</div>
 
 				<div class="comment-form">
-					<h3>Leave a comment</h3>
+					<h2>Leave a comment</h2>
 					<form id="comment-form">
 						<div class="span3">
 							<label for="comment">Comment</label>
