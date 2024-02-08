@@ -109,6 +109,10 @@ Typography
 	font-weight: bold;
 }
 
+.italic {
+	font-style: italic;
+}
+
 .faq-answer:not(:last-of-type) {
 	margin-bottom: 1rem;
 }
@@ -152,6 +156,13 @@ Elements
 
 .padding-left-1 {
 	padding-left: 1rem;
+}
+
+.hr {
+	border: 0;
+	border-top: 4px solid var(--clr-orange);
+	border-radius: 5px;
+	margin: 4rem 0;
 }
 
 /********************************************************************************************

@@ -15,7 +15,7 @@ Mobile media queries
 		width: 100%;
 		padding: 2rem;
 		background-color: var(--clr-blue-dark);
-		border-radius-top: 5px;
+		border-radius: 5px;
 		box-shadow: 0 -1rem 1rem var(--clr-blue-dark-desat);
 		z-index: 900;
 
@@ -68,75 +68,90 @@ Mobile media queries
 		}
 	}
 
-	/* Show the footer, compensate for menu toggle height */
-	body {
-		padding-bottom: 4rem;
+	/* Re-configure the comments section */
+	.comment-wrapper {
+		grid-template-areas: "avatar meta" "comment comment";
+
+		#comment-form {
+			& button {
+				width: 100%;
+			}
+
+			& .span3-mobile {
+				grid-column: span 3;
+			}
+		}
+
+		/* Show the footer, compensate for menu toggle height */
+		body {
+			padding-bottom: 4rem;
+		}
+
+		/* Push content further to the sides */
+		.content-grid {
+			--padding-inline: 0.5rem;
+		}
+
+		/* Remove nav buttons on carousel */
+		.carousel-button {
+			display: none;
+		}
 	}
 
-	/* Push content further to the sides */
-	.content-grid {
-		--padding-inline: 0.5rem;
-	}
+	/* Extra tiny screens */
+	@media (max-width: 395px) {
+		.logo-title {
+			font-size: 1.5rem;
+		}
 
-	/* Remove nav buttons on carousel */
-	.carousel-button {
-		display: none;
-	}
-}
+		.header img {
+			max-width: 3rem;
+		}
 
-/* Extra tiny screens */
-@media (max-width: 395px) {
-	.logo-title {
-		font-size: 1.5rem;
-	}
+		.flex-row {
+			gap: 0.5rem;
+		}
 
-	.header img {
-		max-width: 3rem;
-	}
+		.post-card {
+			max-width: 85vw;
+		}
 
-	.flex-row {
-		gap: 0.5rem;
-	}
+		.hero i {
+			display: none;
+		}
 
-	.post-card {
-		max-width: 85vw;
-	}
+		/* Adjust timeline */
+		.timeline {
+			margin-top: 2rem;
+		}
 
-	.hero i {
-		display: none;
-	}
+		.timeline::before {
+			left: 1rem;
+			top: 2rem;
+		}
 
-	/* Adjust timeline */
-	.timeline {
-		margin-top: 2rem;
-	}
+		.timeline-event {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+		}
 
-	.timeline::before {
-		left: 1rem;
-		top: 2rem;
-	}
+		.timeline-content {
+			margin-left: 3rem;
+			text-align: left;
+		}
 
-	.timeline-event {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-	}
+		.timeline-description {
+			display: flex;
+			flex-direction: row;
+			gap: 1rem;
+			padding: 0;
+			margin: 0;
 
-	.timeline-content {
-		margin-left: 3rem;
-		text-align: left;
-	}
-
-	.timeline-description {
-		display: flex;
-		flex-direction: row;
-		gap: 1rem;
-		padding: 0;
-		margin: 0;
-
-		& i {
-			width: 2.25rem;
-			height: 2.25rem;
+			& i {
+				width: 2.25rem;
+				height: 2.25rem;
+			}
 		}
 	}
 }

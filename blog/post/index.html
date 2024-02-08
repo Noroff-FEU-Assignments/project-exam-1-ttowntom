@@ -95,6 +95,74 @@
 			</div>
 			<div class="post-content content-grid"><!-- Rendered by JS  --></div>
 			<div class="post-tags content-grid"><!-- Rendered by JS  --></div>
+
+			<section id="comment-section" class="content-grid">
+				<div class="breakout hr"></div>
+				<div class="comments">
+					<h2>Comments</h2>
+					<div class="loader-wrapper display--none">
+						<div class="loader"></div>
+					</div>
+					<div id="comments-list">
+						<div class="comment-wrapper">
+							<div class="comment-avatar">
+								<img src="/img/vecAvt.jpg" alt="" />
+							</div>
+							<div class="comment-meta">
+								<h2>John Doe</h2>
+								<p class="italic">January 1, 2024</p>
+							</div>
+							<div class="comment-content">
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									Aliquam at porttitor sem. Aliquam erat volutpat. Donec
+									vehicula egestas venenatis. Nullam in diam nec arcu convallis
+									elementum. Nulla facilisi. Sed auctor ullamcorper libero, at
+									aliquet odio tincidunt non. Phasellus nec ultrices nunc. Nulla
+									facilisi. Sed auctor ullamcorper libero, at aliquet odio
+									tincidunt non. Phasellus nec ultrices nunc.
+								</p>
+							</div>
+						</div>
+						<!-- Rendered by JS  -->
+					</div>
+				</div>
+
+				<div class="comment-form">
+					<h3>Leave a comment</h3>
+					<form id="comment-form">
+						<div class="span3">
+							<label for="comment">Comment</label>
+							<textarea
+								id="comment"
+								name="comment"
+								placeholder="Your comment.."
+								required></textarea>
+						</div>
+						<div class="span3-mobile">
+							<label for="name">Name</label>
+							<input
+								type="text"
+								id="name"
+								name="name"
+								placeholder="Your name"
+								required />
+						</div>
+						<div class="span3-mobile">
+							<label for="email">Email</label>
+							<input
+								type="email"
+								id="email"
+								name="email"
+								placeholder="Your email"
+								required />
+						</div>
+						<button type="submit" class="btn-accent span3-mobile">
+							Comment
+						</button>
+					</form>
+				</div>
+			</section>
 		</main>
 		<footer id="footer" class="footer"></footer>
 	</body>
