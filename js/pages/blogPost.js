@@ -58,7 +58,7 @@ const comments = document.querySelector("#comments-list");
 const noComments = document.querySelector(".comments-empty");
 const commentsHeader = document.querySelector(".comments-header");
 const commentForm = document.querySelector("#comment-form");
-const commentBtn = document.querySelector("#comment-btn");
+const formLoader = document.querySelector(".form-loader");
 
 ///////////////////////////////////////////////////////////////
 // Get the blog post from server
@@ -223,7 +223,7 @@ function timeAgo(dateParam) {
 }
 
 // Render comments to the DOM
-function buildComment(comment) {
+function buildComment(comment, placement = "append") {
 	// Create comment wrapper
 	const commentWrapper = document.createElement("div");
 	commentWrapper.classList.add("comment-wrapper");
@@ -254,10 +254,16 @@ function buildComment(comment) {
 	commentContent.innerHTML = comment.content.rendered;
 	commentWrapper.appendChild(commentContent);
 
-	comments.appendChild(commentWrapper);
+	// Append comment to the DOM
+	if (placement === "prepend") {
+		comments.prepend(commentWrapper);
+	} else {
+		comments.appendChild(commentWrapper);
+	}
 }
 
 // Render existing comments on page load
+let postHasComments = false;
 function buildCommentSection(post) {
 	// Build comments list
 	commentSection.classList.remove("display--none");
@@ -266,7 +272,7 @@ function buildCommentSection(post) {
 		commentsHeader.textContent = "No comments yet";
 		noComments.classList.remove("display--none");
 	} else {
-		// There are comments on this post
+		postHasComments = true;
 		// Build comments list
 		post._embedded.replies[0].forEach((comment) => {
 			buildComment(comment);
@@ -274,7 +280,7 @@ function buildCommentSection(post) {
 	}
 }
 
-// Add event listener to comment form
+// Add event listener to comment submit button
 commentForm.addEventListener("submit", (e) => {
 	e.preventDefault();
 	// Get query string from the URL
@@ -286,14 +292,35 @@ commentForm.addEventListener("submit", (e) => {
 	const formData = new FormData(commentForm);
 	formData.append("post", postId);
 	comment(formData);
-	console.log("Comment form submitted");
+	// Hide form, show loader
+	commentForm.classList.add("display--none");
+	commentForm.style.display = "none";
+	commentForm.reset();
+	formLoader.classList.remove("display--none");
 });
 
 // POST comment and render to the DOM
 async function comment(formData) {
 	try {
 		let commentResponse = await postCommentForm(formData);
-		buildComment(commentResponse);
+		// There are comments on this post
+		postHasComments = true;
+
+		// Hide loader, show form
+		formLoader.classList.add("display--none");
+		commentForm.style.display = "grid";
+
+		// The post has comments now
+		if (postHasComments) {
+			commentsHeader.textContent = "Comments";
+			noComments.classList.add("display--none");
+		}
+
+		// Render the new comment to the DOM
+		buildComment(commentResponse, "prepend");
+
+		// Scroll to the new comment
+		commentSection.scrollIntoView({ behavior: "smooth" });
 	} catch (error) {
 		console.log(`Error: `, error);
 	}
