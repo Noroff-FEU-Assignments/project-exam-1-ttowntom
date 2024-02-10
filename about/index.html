@@ -84,11 +84,13 @@
 		<script src="/js/index.js" type="module"></script>
 	</head>
 	<body>
+		<a href="#mainContent" class="visually-hidden">Skip to content</a>
 		<header id="header" class="header menu"></header>
-		<main class="">
-			<div class="hero" id="hero-about">
+		<main id="mainContent">
+			<section class="hero" id="hero-about">
 				<h1>About</h1>
 				<img
+					aria-hidden="true"
 					class="hero-img rounded"
 					src="/img/vecAvt.jpg"
 					alt="A profile image" />
@@ -101,131 +103,139 @@
 					more than just a blog; it’s a reflection of my love for innovation and
 					the digital landscape.
 				</p>
-			</div>
-			<div class="content-grid">
-				<h2>From code to craft</h2>
-				<p>
-					What started as a personal quest to understand the intricacies of
-					front-end development has blossomed into CodeJourney.io, a platform
-					for sharing, learning, and growing together. This blog is my digital
-					canvas, where I paint the stories of my tech journey, one post at a
-					time.
-				</p>
-				<p>Here, you’ll find a rich array of topics, including:</p>
-				<ul class="ul-breakout">
-					<li class="padding-left-1">
-						<span class="bold">Front-End Fundamentals:</span> Tips, tricks, and
-						insights into HTML, CSS, and JavaScript.
-					</li>
-					<li class="padding-left-1">
-						<span class="bold">Home Server Management:</span> Navigating the
-						world of DIY servers and network setups.
-					</li>
-					<li class="padding-left-1">
-						<span class="bold">Tool Reviews and Tutorials:</span> From GitHub to
-						NodeRed, explore the tools that make a developer's life exciting.
-					</li>
-					<li class="padding-left-1">
-						<span class="bold">Personal Projects and Challenges:</span> A peek
-						into the projects I tinker with and the challenges faced along the
-						way.
-					</li>
-					<li class="padding-left-1">
-						<span class="bold">Tech Lifestyle:</span> Balancing the digital
-						world with everyday life, exploring how technology influences our
-						daily routines.
-					</li>
-				</ul>
-				<p>
-					Whether you’re a fellow tech aficionado or a curious mind venturing
-					into the world of coding, there’s something here for you!
-				</p>
-				<h2>Where I'm at in my journey</h2>
-				<p>
-					The journey is as important as the destination. Each step on this path
-					has been a building block towards a comprehensive understanding of
-					technology and its impact. And this journey continues...
-				</p>
-				<div>
-					<ol class="timeline">
-						<li class="timeline-event">
-							<div class="timeline-content">
-								<time>2019, Nov</time>
-							</div>
-							<div class="timeline-description">
-								<i class="fa-solid fa-server"></i>
-								<p>Built my first home server</p>
-							</div>
+			</section>
+			<article class="content-grid">
+				<section>
+					<h2>From code to craft</h2>
+					<p>
+						What started as a personal quest to understand the intricacies of
+						front-end development has blossomed into CodeJourney.io, a platform
+						for sharing, learning, and growing together. This blog is my digital
+						canvas, where I paint the stories of my tech journey, one post at a
+						time.
+					</p>
+					<p>Here, you’ll find a rich array of topics, including:</p>
+					<ul class="ul-breakout">
+						<li class="padding-left-1">
+							<span class="bold">Front-End Fundamentals:</span> Tips, tricks,
+							and insights into HTML, CSS, and JavaScript.
 						</li>
-						<li class="timeline-event">
-							<div class="timeline-content">
-								<time>2021, Oct</time>
-							</div>
-							<div class="timeline-description">
-								<i class="fa-solid fa-hand-wave"></i>
-								<p>Left the film industry to start a online business</p>
-							</div>
+						<li class="padding-left-1">
+							<span class="bold">Home Server Management:</span> Navigating the
+							world of DIY servers and network setups.
 						</li>
-						<li class="timeline-event">
-							<div class="timeline-content">
-								<time>2022, Jan</time>
-							</div>
-							<div class="timeline-description">
-								<i class="fa-solid fa-database"></i>
-								<p>Got introduced to SQL</p>
-							</div>
+						<li class="padding-left-1">
+							<span class="bold">Tool Reviews and Tutorials:</span> From GitHub
+							to NodeRed, explore the tools that make a developer's life
+							exciting.
 						</li>
-						<li class="timeline-event">
-							<div class="timeline-content">
-								<time>2022, Jan</time>
-							</div>
-							<div class="timeline-description">
-								<i class="fa-brands fa-square-js"></i>
-								<p>Caught interest in JavaScript</p>
-							</div>
+						<li class="padding-left-1">
+							<span class="bold">Personal Projects and Challenges:</span> A peek
+							into the projects I tinker with and the challenges faced along the
+							way.
 						</li>
-						<li class="timeline-event">
-							<div class="timeline-content">
-								<time>2023, Mar</time>
-							</div>
-							<div class="timeline-description">
-								<i class="fa-solid fa-book"></i>
-								<p>Enrolled in Front End Development studies at Noroff</p>
-							</div>
+						<li class="padding-left-1">
+							<span class="bold">Tech Lifestyle:</span> Balancing the digital
+							world with everyday life, exploring how technology influences our
+							daily routines.
 						</li>
-						<li class="timeline-event">
-							<div class="timeline-content">
-								<time>2024, Feb</time>
-							</div>
-							<div class="timeline-description">
-								<i class="fa-solid fa-browser"></i>
-								<p>Launched CodeJourney.io</p>
-							</div>
-						</li>
-						<li class="timeline-event">
-							<div class="timeline-content timeline-later">
-								<time>2025, Mar</time>
-							</div>
-							<div class="timeline-description timeline-later">
-								<i class="fa-solid fa-graduation-cap"></i>
-								<p>Graduated from Noroff</p>
-							</div>
-						</li>
-					</ol>
-				</div>
-				<h2>Join the journey</h2>
-				<p>
-					Thank you for visiting CodeJourney.io. Each article, each line of
-					code, and each shared experience here is a step towards greater
-					understanding and mastery of the digital world. I hope these pages
-					inspire, educate, and resonate with you, just as technology does with
-					me. Dive in, explore, and let’s embark on this remarkable journey
-					together. Your thoughts, feedback, and stories are what make this
-					journey truly rewarding.
-				</p>
-				<p>Happy coding, happy exploring!</p>
-				<a href="/blog/" class="btn-accent">Back to the blog</a>
-			</div>
+					</ul>
+					<p>
+						Whether you’re a fellow tech aficionado or a curious mind venturing
+						into the world of coding, there’s something here for you!
+					</p>
+				</section>
+
+				<section>
+					<h2>Where I'm at in my journey</h2>
+					<p>
+						The journey is as important as the destination. Each step on this
+						path has been a building block towards a comprehensive understanding
+						of technology and its impact. And this journey continues...
+					</p>
+					<div>
+						<ol class="timeline">
+							<li class="timeline-event" aria-hidden="true">
+								<div class="timeline-content">
+									<time>2019, Nov</time>
+								</div>
+								<div class="timeline-description">
+									<i class="fa-solid fa-server"></i>
+									<p>Built my first home server</p>
+								</div>
+							</li>
+							<li class="timeline-event" aria-hidden="true">
+								<div class="timeline-content">
+									<time>2021, Oct</time>
+								</div>
+								<div class="timeline-description">
+									<i class="fa-solid fa-hand-wave"></i>
+									<p>Left the film industry to start a online business</p>
+								</div>
+							</li>
+							<li class="timeline-event" aria-hidden="true">
+								<div class="timeline-content">
+									<time>2022, Jan</time>
+								</div>
+								<div class="timeline-description">
+									<i class="fa-solid fa-database"></i>
+									<p>Got introduced to SQL</p>
+								</div>
+							</li>
+							<li class="timeline-event" aria-hidden="true">
+								<div class="timeline-content">
+									<time>2022, Jan</time>
+								</div>
+								<div class="timeline-description">
+									<i class="fa-brands fa-square-js"></i>
+									<p>Caught interest in JavaScript</p>
+								</div>
+							</li>
+							<li class="timeline-event" aria-hidden="true">
+								<div class="timeline-content">
+									<time>2023, Mar</time>
+								</div>
+								<div class="timeline-description">
+									<i class="fa-solid fa-book"></i>
+									<p>Enrolled in Front End Development studies at Noroff</p>
+								</div>
+							</li>
+							<li class="timeline-event" aria-hidden="true">
+								<div class="timeline-content">
+									<time>2024, Feb</time>
+								</div>
+								<div class="timeline-description">
+									<i class="fa-solid fa-browser"></i>
+									<p>Launched CodeJourney.io</p>
+								</div>
+							</li>
+							<li class="timeline-event" aria-hidden="true">
+								<div class="timeline-content timeline-later">
+									<time>2025, Mar</time>
+								</div>
+								<div class="timeline-description timeline-later">
+									<i class="fa-solid fa-graduation-cap"></i>
+									<p>Graduated from Noroff</p>
+								</div>
+							</li>
+						</ol>
+					</div>
+				</section>
+				<section>
+					<h2>Join the journey</h2>
+					<p>
+						Thank you for visiting CodeJourney.io. Each article, each line of
+						code, and each shared experience here is a step towards greater
+						understanding and mastery of the digital world. I hope these pages
+						inspire, educate, and resonate with you, just as technology does
+						with me. Dive in, explore, and let’s embark on this remarkable
+						journey together. Your thoughts, feedback, and stories are what make
+						this journey truly rewarding.
+					</p>
+					<p>Happy coding, happy exploring!</p>
+					<a href="/blog/" class="btn-accent">Back to the blog</a>
+				</section>
+			</article>
 		</main>
 		<footer id="footer" class="footer"></footer>
 	</body>

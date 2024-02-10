@@ -229,7 +229,7 @@ function timeAgo(dateParam) {
 // Render comments to the DOM
 function buildComment(comment, placement = "append") {
 	// Create comment wrapper
-	const commentWrapper = document.createElement("div");
+	const commentWrapper = document.createElement("aside");
 	commentWrapper.classList.add("comment-wrapper");
 
 	// Create comment avatar

@@ -2,8 +2,11 @@
 // Build blog post card HTML
 export async function postCard(post) {
 	// Create card wrapper
+	const article = document.createElement("article");
+	article.classList.add("post-card");
+	// Create card link wrapper
 	const card = document.createElement("a");
-	card.classList.add("post-card");
+	// card.classList.add("post-card");
 	card.href = `/blog/post/?id=${post.id}`;
 
 	// Create card header image
@@ -50,6 +53,9 @@ export async function postCard(post) {
 	card.appendChild(headerImg);
 	card.appendChild(text);
 
+	// Append card to article
+	article.appendChild(card);
+
 	// Return card
-	return card;
+	return article;
 }

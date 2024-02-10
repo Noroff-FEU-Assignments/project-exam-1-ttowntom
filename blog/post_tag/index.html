@@ -84,16 +84,17 @@
 		<script src="/js/index.js" type="module"></script>
 	</head>
 	<body>
+		<a href="#mainContent" class="visually-hidden">Skip to content</a>
 		<header id="header" class="header menu"></header>
-		<main class="">
-			<div class="hero" id="hero-blog">
+		<main id="mainContent">
+			<section class="hero" id="hero-blog">
 				<h1>Tag: <span></span></h1>
-				<i class="fa-solid fa-tags"></i>
+				<i aria-hidden="true" class="fa-solid fa-tags"></i>
 				<p>
 					You're viewing posts tagged with
 					<span id="tag-name" class="code"></span>
 				</p>
-			</div>
+			</section>
 
 			<h2 class="text-center">Latest posts</h2>
 			<div id="main-loader" class="loader-wrapper">
@@ -105,7 +106,9 @@
 			</div>
 			<button id="btn-load-more" class="btn-accent-blue rounded display--none">
 				Load more
-			</button>
+			</button>e
+				</button>
+			</section>
 
 			<div class="loader-wrapper posts-loader display--none">
 				<div class="loader posts-loader display--none"></div>

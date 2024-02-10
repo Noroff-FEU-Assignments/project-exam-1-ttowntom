@@ -125,6 +125,14 @@ footer {
 	border-radius: 5px;
 }
 
+section {
+	margin-bottom: 3rem;
+}
+
+section:last-child {
+	margin-bottom: 0;
+}
+
 /* Widths setup :: Suggested by Kevin Powell https://www.youtube.com/watch?v=c13gpBrnGEw */
 .content-grid {
 	--padding-inline: 2rem;

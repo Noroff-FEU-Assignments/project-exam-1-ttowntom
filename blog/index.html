@@ -84,23 +84,24 @@
 		<script src="/js/index.js" type="module"></script>
 	</head>
 	<body>
+		<a href="#mainContent" class="visually-hidden">Skip to content</a>
 		<header id="header" class="header menu"></header>
-		<main class="">
-			<div class="hero" id="hero-blog">
+		<main id="mainContent">
+			<section class="hero" id="hero-blog">
 				<h1>Blog posts</h1>
-				<i class="fa-solid fa-blog"></i>
+				<i aria-hidden="true" class="fa-solid fa-blog"></i>
 				<p>
 					From the nitty-gritty of coding to the expansive realm of tech trends,
 					practical how-tos, and reflective pieces that are not just about
 					coding, but about the journey of a developer.
 				</p>
-			</div>
+			</section>
 			<!-- <h2 class="text-center">Featured posts</h2>
 			<div id="featured"> -->
 			<!-- Rendered by JS  -->
 			<!-- </div> -->
 
-			<div class="filter">
+			<section class="filter" role="navigation">
 				<div class="filter-categories">
 					<button class="btn-accent-blue category active" data-category="all">
 						All
@@ -119,26 +120,31 @@
 					</button>
 				</div>
 				<div class="filter-search">
+					<label for="search" class="visually-hidden">Search for a post</label>
 					<input type="text" id="search" placeholder="Search for a post..." />
-					<button class="btn-accent-blue">Search</button>
+					<button aria-label="Search posts" class="btn-accent-blue">
+						Search
+					</button>
 				</div>
-			</div>
+			</section>
 
-			<h2 class="text-center">Latest posts</h2>
-			<div id="main-loader" class="loader-wrapper">
-				<div class="loader"></div>
-			</div>
-
-			<div id="posts">
-				<!-- Rendered by JS  -->
-			</div>
-			<button id="btn-load-more" class="btn-accent-blue rounded display--none">
-				Load more
-			</button>
-
-			<div class="loader-wrapper posts-loader display--none">
-				<div class="loader posts-loader display--none"></div>
-			</div>
+			<section>
+				<h2 class="text-center">Latest posts</h2>
+				<div id="main-loader" class="loader-wrapper">
+					<div class="loader"></div>
+				</div>
+				<div id="posts" aria-live="polite">
+					<!-- Rendered by JS  -->
+				</div>
+				<button
+					id="btn-load-more"
+					class="btn-accent-blue rounded display--none">
+					Load more
+				</button>
+				<div class="loader-wrapper posts-loader display--none">
+					<div class="loader posts-loader display--none"></div>
+				</div>
+			</section>
 		</main>
 
 		<footer id="footer" class="footer"></footer>

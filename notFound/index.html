@@ -84,18 +84,19 @@
 		<script src="/js/index.js" type="module"></script>
 	</head>
 	<body>
+		<a href="#mainContent" class="visually-hidden">Skip to content</a>
 		<header id="header" class="header menu"></header>
-		<main class="">
-			<div class="hero" id="hero-blog">
+		<main id="mainContent">
+			<section class="hero" id="hero-blog">
 				<h1>Not found (404)</h1>
-				<i class="fa-solid fa-alien-8bit"></i>
+				<i aria-hidden="true" class="fa-solid fa-alien-8bit"></i>
 				<p>
 					The page you are looking for does not exist. Our alien server-keeper
 					is sorry for the inconvenience.
 				</p>
-			</div>
+			</section>
 
-			<div class="content-grid">
+			<section class="content-grid">
 				<div>
 					<h2 class="text-center">There's nothing here</h2>
 					<p class="big-font text-center">🧐</p>
@@ -112,7 +113,7 @@
 				<div class="span2 flex-row flex-justify-center margin-top-2">
 					<a href="/blog/" class="btn-accent">Back to the blog</a>
 				</div>
-			</div>
+			</section>
 		</main>
 
 		<footer id="footer" class="footer"></footer>
