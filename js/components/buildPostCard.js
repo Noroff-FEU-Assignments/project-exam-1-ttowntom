@@ -2,8 +2,11 @@
 // Build blog post card HTML
 export async function postCard(post) {
 	// Create card wrapper
+	const article = document.createElement("article");
+	article.classList.add("post-card");
+	// Create card link wrapper
 	const card = document.createElement("a");
-	card.classList.add("post-card");
+	// card.classList.add("post-card");
 	card.href = `/blog/post/?id=${post.id}`;
 
 	// Create card header image
@@ -15,7 +18,7 @@ export async function postCard(post) {
 		post._embedded["wp:featuredmedia"][0]
 	) {
 		headerImg.src = post._embedded["wp:featuredmedia"][0].source_url;
-		headerImg.alt = post._embedded["wp:featuredmedia"][0].caption.rendered;
+		headerImg.alt = post._embedded["wp:featuredmedia"][0].alt_text;
 	} else {
 		// Set a default image source or handle the absence of an image
 		headerImg.src = "/img/codeJourneyLogoDarkBlue.png";
@@ -50,6 +53,9 @@ export async function postCard(post) {
 	card.appendChild(headerImg);
 	card.appendChild(text);
 
+	// Append card to article
+	article.appendChild(card);
+
 	// Return card
-	return card;
+	return article;
 }

@@ -14,8 +14,6 @@ Blog posts
 
 /* Blog posts cards */
 .post-card {
-	display: flex;
-	flex-direction: column;
 	max-width: 100%;
 	height: 100%;
 	background-color: var(--clr-black);
@@ -23,8 +21,14 @@ Blog posts
 	overflow: hidden;
 	border: 1px solid var(--clr-grey-desat);
 	border-left: 4px solid var(--clr-orange);
-	color: var(--clr-white);
-	text-decoration: none;
+
+	& a {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		color: var(--clr-white);
+		text-decoration: none;
+	}
 
 	&:is(:hover, :focus, :active) {
 		border: 1px solid var(--clr-grey);
@@ -183,6 +187,7 @@ Blog posts carousel
 	align-items: stretch;
 	width: 100%;
 	transition: transform 0.5s ease;
+	max-height: 40rem; /* I don't love this */
 }
 
 .carousel-track .post-card {

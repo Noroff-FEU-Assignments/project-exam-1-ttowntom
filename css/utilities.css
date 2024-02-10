@@ -49,6 +49,7 @@ Navigation
 .btn-accent,
 .btn-accent-blue,
 .btn-error {
+	display: block;
 	width: max-content;
 	margin-block: 1rem;
 	padding: 0.5rem 1rem;

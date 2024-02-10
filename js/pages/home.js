@@ -66,7 +66,7 @@ function getSlidesToShow() {
 function updateCarouselItemsWidth() {
 	const carouselItems = document.querySelectorAll(".carousel-track .post-card");
 	carouselItems.forEach((item) => {
-		item.style.flex = `0 0 calc(${100 / slidesToShow}% - 1.25rem)`;
+		item.style.flex = `0 0 calc(${100 / slidesToShow}% - 1rem)`;
 	});
 }
 
@@ -122,6 +122,7 @@ function createDots(numberOfDots) {
 	for (let i = 0; i < numberOfDots; i++) {
 		const dot = document.createElement("div");
 		dot.classList.add("carousel-dot");
+		dot.ariaLabel = `Go to slide ${i + 1}`;
 		dot.addEventListener("click", () => moveToSlide(i));
 		dotsContainer.appendChild(dot);
 	}

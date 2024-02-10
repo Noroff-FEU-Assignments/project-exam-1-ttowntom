@@ -84,11 +84,12 @@
 		<script src="/js/index.js" type="module"></script>
 	</head>
 	<body>
+		<a href="#mainContent" class="visually-hidden">Skip to content</a>
 		<header id="header" class="header menu"></header>
-		<main class="">
-			<div class="hero" id="hero-contact">
+		<main id="mainContent">
+			<section class="hero" id="hero-contact">
 				<h1>Contact</h1>
-				<i class="fa-solid fa-envelopes-bulk"></i>
+				<i aria-hidden="true" class="fa-solid fa-envelopes-bulk"></i>
 				<p>
 					Got a question, idea, or just want to talk tech? I'd love to hear from
 					you! Whether it's feedback on the blog, inquiries about front-end
@@ -97,112 +98,117 @@
 					even more exciting!
 				</p>
 				<div></div>
-			</div>
+			</section>
 			<div class="content-grid">
-				<h2>Contact form</h2>
-				<div class="loader-wrapper loader-display display--none">
-					<div class="loader loader-display display--none"></div>
-				</div>
-				<form id="contact-form" action="">
-					<div class="span2-mobile">
-						<label for="name">Name</label>
-						<input
-							type="text"
-							name="name"
-							id="name"
-							data-min-length="5"
-							title="Name must be at least 2 characters long (letters only)"
-							placeholder="Your name"
-							required />
-						<p class="error-msg display--none"></p>
+				<section>
+					<h2>Contact form</h2>
+					<div class="loader-wrapper loader-display display--none">
+						<div class="loader loader-display display--none"></div>
 					</div>
-					<div class="span2-mobile">
-						<label for="email">Email</label>
-						<input
-							type="email"
-							name="email"
-							id="email"
-							title="Please enter a valid email address. Example: name@mail.com"
-							placeholder="Your email"
-							required />
-						<p class="error-msg display--none"></p>
+					<form id="contact-form" action="">
+						<div class="span2-mobile">
+							<label for="name">Name</label>
+							<input
+								type="text"
+								name="name"
+								id="name"
+								data-min-length="5"
+								title="Name must be at least 2 characters long (letters only)"
+								placeholder="Your name"
+								required />
+							<p aria-live="polite" class="error-msg display--none"></p>
+						</div>
+						<div class="span2-mobile">
+							<label for="email">Email</label>
+							<input
+								type="email"
+								name="email"
+								id="email"
+								title="Please enter a valid email address. Example: name@mail.com"
+								placeholder="Your email"
+								required />
+							<p aria-live="polite" class="error-msg display--none"></p>
+						</div>
+						<div class="span2">
+							<label for="subject">Subject</label>
+							<input
+								type="text"
+								name="subject"
+								id="subject"
+								data-min-length="15"
+								title="Subject must be at least 2 characters long (letters only)"
+								placeholder="Subject"
+								required />
+							<p aria-live="polite" class="error-msg display--none"></p>
+						</div>
+						<div class="span2">
+							<label for="message">Message</label>
+							<textarea
+								name="message"
+								id="message"
+								data-min-length="25"
+								title="Message must be letters and numbers only"
+								placeholder="Your message"
+								required></textarea>
+							<p aria-live="polite" class="error-msg display--none"></p>
+						</div>
+						<div class="span2 form-btn-wrapper">
+							<div class="form-error display--none"></div>
+							<button id="form-send" type="submit" class="btn-accent">
+								Send
+							</button>
+						</div>
+					</form>
+				</section>
+				<section>
+					<div>
+						<h2>FAQs (Frequently Asked Questions)</h2>
+						<p class="bold">How quickly can I expect a response?</p>
+						<p class="faq-answer">
+							I aim to respond to messages within 48 hours. If there's a delay,
+							rest assured, I haven't missed your message and will get back to
+							you as soon as possible.
+						</p>
+						<p class="bold">
+							Can I contribute a guest post or suggest a topic for
+							CodeJourney.io?
+						</p>
+						<p class="faq-answer">
+							Absolutely! I'm always open to guest posts and topic suggestions
+							that align with the spirit of CodeJourney.io. If you have an idea,
+							send it over, and let's chat about it.
+						</p>
+						<p class="bold">
+							Do you collaborate on tech projects or offer mentorship?
+						</p>
+						<p class="faq-answer">
+							I'm keen on collaborating on interesting projects and may be
+							available for mentorship. If you have a project in mind or seek
+							guidance in the tech world, reach out, and let's explore the
+							possibilities.
+						</p>
+						<p class="bold">
+							Can I use the content from your blog for my own project?
+						</p>
+						<p class="faq-answer">
+							The content on CodeJourney.io is created with a lot of effort and
+							dedication. If you find something useful and wish to use it,
+							please credit the blog appropriately. For broader usage, please
+							contact me for permission.
+						</p>
+						<p class="bold">
+							Are you available for speaking engagements or webinars?
+						</p>
+						<p class="faq-answer">
+							I'm always thrilled to share my knowledge and experiences. If
+							you're looking for a speaker for your event or a contributor for a
+							webinar, feel free to reach out with the details.
+						</p>
 					</div>
-					<div class="span2">
-						<label for="subject">Subject</label>
-						<input
-							type="text"
-							name="subject"
-							id="subject"
-							data-min-length="15"
-							title="Subject must be at least 2 characters long (letters only)"
-							placeholder="Subject"
-							required />
-						<p class="error-msg display--none"></p>
+					<div class="span2 flex-row">
+						<a href="/blog/" class="btn-accent">Back to the blog</a>
 					</div>
-					<div class="span2">
-						<label for="message">Message</label>
-						<textarea
-							name="message"
-							id="message"
-							data-min-length="25"
-							title="Message must be letters and numbers only"
-							placeholder="Your message"
-							required></textarea>
-						<p class="error-msg display--none"></p>
-					</div>
-					<div class="span2 form-btn-wrapper">
-						<div class="form-error display--none"></div>
-						<button id="form-send" type="submit" class="btn-accent">
-							Send
-						</button>
-					</div>
-				</form>
-				<div>
-					<h2>FAQs (Frequently Asked Questions)</h2>
-					<p class="bold">How quickly can I expect a response?</p>
-					<p class="faq-answer">
-						I aim to respond to messages within 48 hours. If there's a delay,
-						rest assured, I haven't missed your message and will get back to you
-						as soon as possible.
-					</p>
-					<p class="bold">
-						Can I contribute a guest post or suggest a topic for CodeJourney.io?
-					</p>
-					<p class="faq-answer">
-						Absolutely! I'm always open to guest posts and topic suggestions
-						that align with the spirit of CodeJourney.io. If you have an idea,
-						send it over, and let's chat about it.
-					</p>
-					<p class="bold">
-						Do you collaborate on tech projects or offer mentorship?
-					</p>
-					<p class="faq-answer">
-						I'm keen on collaborating on interesting projects and may be
-						available for mentorship. If you have a project in mind or seek
-						guidance in the tech world, reach out, and let's explore the
-						possibilities.
-					</p>
-					<p class="bold">
-						Can I use the content from your blog for my own project?
-					</p>
-					<p class="faq-answer">
-						The content on CodeJourney.io is created with a lot of effort and
-						dedication. If you find something useful and wish to use it, please
-						credit the blog appropriately. For broader usage, please contact me
-						for permission.
-					</p>
-					<p class="bold">
-						Are you available for speaking engagements or webinars?
-					</p>
-					<p class="faq-answer">
-						I'm always thrilled to share my knowledge and experiences. If you're
-						looking for a speaker for your event or a contributor for a webinar,
-						feel free to reach out with the details.
-					</p>
-				</div>
-				<div class="span2 flex-row flex-justify-end">
-					<a href="/blog/" class="btn-accent">Back to the blog</a>
-				</div>
+				</section>
 			</div>
 		</main>
 		<footer id="footer" class="footer"></footer>

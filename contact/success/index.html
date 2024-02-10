@@ -87,17 +87,18 @@
 		<script src="/js/index.js" type="module"></script>
 	</head>
 	<body>
+		<a href="#mainContent" class="visually-hidden">Skip to content</a>
 		<header id="header" class="header menu"></header>
-		<main class="">
-			<div class="hero" id="hero-blog">
+		<main id="mainContent">
+			<section class="hero" id="hero-blog">
 				<h1>Thank you!</h1>
-				<i class="fa-solid fa-envelopes-bulk"></i>
+				<i aria-hidden="true" class="fa-solid fa-envelopes-bulk"></i>
 				<p>
 					We have got your message and will get back to you as soon as possible.
 				</p>
-			</div>
+			</section>
 
-			<div class="content-grid">
+			<section class="content-grid">
 				<div>
 					<h2 class="text-center">
 						Your message has landed safely in our inbox
@@ -110,7 +111,7 @@
 				<div class="span2 flex-row flex-justify-center margin-top-2">
 					<a href="/blog/" class="btn-accent">Back to the blog</a>
 				</div>
-			</div>
+			</section>
 		</main>
 
 		<footer id="footer" class="footer"></footer>

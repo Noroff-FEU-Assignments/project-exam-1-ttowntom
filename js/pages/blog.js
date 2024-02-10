@@ -27,8 +27,10 @@ categories.forEach((catElement) => {
 		postsLoader.forEach((loader) => loader.classList.remove("display--none"));
 		// Remove active class from all categories
 		categories.forEach((cat) => cat.classList.remove("active"));
+		categories.forEach((cat) => (cat.ariaPressed = false));
 		// Add active class to clicked category
 		this.classList.add("active");
+		this.ariaPressed = true;
 		activeCategory = this.dataset.category;
 		// Get category name or an empty string for "all"
 		const categoryParam =
