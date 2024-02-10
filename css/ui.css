@@ -187,13 +187,12 @@ Blog posts carousel
 	align-items: stretch;
 	width: 100%;
 	transition: transform 0.5s ease;
-	max-height: 40rem; /* I don't love this */
 }
 
 .carousel-track .post-card {
 	align-items: stretch;
-	flex: 1 0 calc(25% - 1.25rem);
-	min-height: 40rem; /* I don't love this */
+	flex: 1 0 calc(25% - 1rem);
+	min-height: 40rem;
 }
 
 .post-card .post-text {
