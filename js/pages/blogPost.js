@@ -160,6 +160,8 @@ function buildPost(post) {
 		// Find all divs with the class 'wp-block-image'
 		const imageWrappers = doc.querySelectorAll(".wp-block-image");
 
+		console.log(imageWrappers);
+
 		imageWrappers.forEach((wrapper) => {
 			// Find the image element inside the wrapper
 			const img = wrapper.querySelector("img");
@@ -167,6 +169,8 @@ function buildPost(post) {
 				// Remove all classes and add the 'breakout' class
 				img.className = "";
 				img.classList.add("breakout", "post-img");
+				// Add alt text
+				console.log(img);
 				// Replace the wrapper with the image
 				wrapper.parentNode.replaceChild(img, wrapper);
 			}
@@ -361,7 +365,7 @@ function openModal() {
 				? getLargestImageUrl(img.getAttribute("srcset"))
 				: img.src;
 			modalImg.src = largestImageUrl;
-			captionText.innerHTML = img.alt;
+			modalImg.alt = img.alt;
 		};
 	});
 
