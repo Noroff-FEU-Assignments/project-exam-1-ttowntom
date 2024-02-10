@@ -160,8 +160,6 @@ function buildPost(post) {
 		// Find all divs with the class 'wp-block-image'
 		const imageWrappers = doc.querySelectorAll(".wp-block-image");
 
-		console.log(imageWrappers);
-
 		imageWrappers.forEach((wrapper) => {
 			// Find the image element inside the wrapper
 			const img = wrapper.querySelector("img");
@@ -170,7 +168,6 @@ function buildPost(post) {
 				img.className = "";
 				img.classList.add("breakout", "post-img");
 				// Add alt text
-				console.log(img);
 				// Replace the wrapper with the image
 				wrapper.parentNode.replaceChild(img, wrapper);
 			}
@@ -383,6 +380,13 @@ function openModal() {
 			modal.style.display = "none";
 		}
 	};
+
+	// Close the modal when pressing the Esc key
+	document.addEventListener("keydown", function (event) {
+		if (event.key === "Escape") {
+			modal.style.display = "none";
+		}
+	});
 }
 
 ///////////////////////////////////////////////////////////////
