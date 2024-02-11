@@ -9,6 +9,7 @@ function formValidation() {
 	const messageInput = form.querySelector("#message");
 	const submitButton = form.querySelector("#form-send");
 	const loader = document.querySelectorAll(".loader-display");
+	const formErrField = document.querySelector("#contact-form-error");
 
 	// Show loader and hide form function
 	function showLoaderHideForm() {
@@ -84,9 +85,8 @@ function formValidation() {
 			showLoaderHideForm();
 			const formData = new FormData(form);
 			// Add unit tag to form data
-			formData.append(" _wpcf7_unit_tag", "randomTagName");
 
-			const formId = 162;
+			const formId = 176;
 
 			postContactForm(formId, formData)
 				.then((data) => {
@@ -96,12 +96,10 @@ function formValidation() {
 				.catch((error) => {
 					// Handle failure
 					console.error("Error submitting form:", error);
+					hideLoaderShowForm();
 
-					// Error is expected as I host the WP myself and have not setup email sending, thus a faky-fake success is in order 😜
-					window.location.href = "/contact/success/";
-
-					// Under normal conditions, the form would be shown again with an error message
-					// hideLoaderShowForm();
+					formErrField.classList.remove("display--none");
+					formErrField.textContent = `An error occurred during form submission. Please try again later. ${error}`;
 				});
 		}
 	});
