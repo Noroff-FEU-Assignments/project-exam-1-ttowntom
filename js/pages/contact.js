@@ -84,8 +84,6 @@ function formValidation() {
 		if (isFormValid) {
 			showLoaderHideForm();
 			const formData = new FormData(form);
-			// Add unit tag to form data
-
 			const formId = 176;
 
 			postContactForm(formId, formData)
