@@ -1,68 +1,52 @@
-## Project Exam 1
+# CodeJourney
 
-## Goal
+![image](https://i.postimg.cc/J40Jmx3p/Home-Code-Journey-io.png)
 
-To put into practice the skills learned over your first year of studies.
+A blog for a fictional character writing about tech and code.
 
-## Brief
-You have been tasked with creating a blog site. You can choose the design and topics covered on the blog, but it should have at least the following pages:
--	Home page
--	About page
--	List of blog posts
--	Blog post specific pages
--	Contact page.
+The site can be viewed live at: [https://pe1-thr.netlify.app/](https://pe1-thr.netlify.app/)
 
-### Home Page
+## Description
 
-The home page should feature a 'Latest Posts' section, designed as a carousel (slider) for the desktop version. As an example, you could display four posts at a time, although you're welcome to adjust this number to better suit your design. Users should be able to click an arrow on the right to scroll through to the next set of posts, and an arrow on the left to view the previous set. For the mobile version, you are free to alter the layout as you deem appropriate, without being tied to a carousel format.
+**A Noroff project repo**: This repo is for the Project Exam 1 in Noroff FED.
 
-### Blog Page
+The project was allocated five weeks from beginning to end and involved coding the site from scratch as well as setting up WordPress as a headless CMS and populating it with the posts for the blog. 
 
-The blog posts page should show the first 10 blogs, and the user should click to view more results which then show underneath the first 10 blogs.
+There were specific tasks that had to be done and integrated into the site, such as building a slider, the use of a "load more" button and validating the contact form. The site also had to include Hotjar analytics. In addition there were options to add filtering and search to the blogs, as well as commenting on the posts.
 
-### Blog Specific Page
+### **The brief in short**:
+You have been tasked with creating a blog site. You can choose the design and topics covered on the blog.
 
-The content of the blog specific page should be dynamically built using a query string parameter based on whatever link the user clicked. The title of the blog specific page should change based on the blog that has been clicked on e.g. “My Blog | An Article I Wrote”.
+#### Site architecture
 
-If images on the blog specific page are clicked, a modal should appear giving the user a bigger view of that image. Clicking outside the image should hide the modal.
+- Home
+- List of blog posts
+- A post specific page
+- About
+- Contact
 
-### Contact page
+## Built With
 
-Create a contact us page, there should be 4 textboxes on this page.
--	Name (Should be more than 5 characters long)
--	Email address (Must be a valid email address)
--	Subject (Should be more than 15 characters long)
--	Message content (Should be more than 25 characters long)
+This site was built using vanilla HTML, CSS and JavaScript.
 
-Please use JavaScript for validation, show error messages if the values in the textboxes do not meet the requirements.
+- [HTML5](https://developer.mozilla.org/en-US/docs/Glossary/HTML5)
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
-### WordPress
+## Getting Started
 
-The content for your website will be stored on a WordPress installation used as a Headless CMS. It’s important to note that we are only using WordPress to provide an API and add content for the blog. You should not submit a link to a WordPress site, but build your website using HTML, CSS and JavaScript and making a call to the WordPress REST API to fetch the data. 
+### Installing
 
-The project has two aspects:
--	API from your WordPress installation
--	Your website built with HTML, CSS and JavaScript
+1. Clone the repo:
 
-You will need to add at least 12 blogs for your website. You can use lorem ipsum for paragraphs if you need, but headings, images etc. should all make sense.
+```bash
+git clone git@github.com:Noroff-FEU-Assignments/project-exam-1-ttowntom.git
+```
 
-Note that this is an exam, and therefore tutor support will be limited as per the study plan.
+### Running
 
-## Level 1 Process
+Open the root `index.html` file in your `Live Server`.
 
-1.	Decide on the theme for the blog you’re going to make
-2.	Create a prototype of the website
-3.	Install WordPress on your web host and add the blogs on the admin panel. 
-4.	Use the GitHub repo created by GitHub Classroom for your files and deploy to Netlify
-5.	Build your website using HTML, CSS and JavaScript making a call to the WordPress REST API to fetch your data.
-6.	Install Hotjar on your website.
-7.	Ask users to test your website, and adjust based on their feedback and any insights from Hotjar.
-8.	Write a report documenting your project (template provided in this repository).
-9.	Submit your report as a PDF and a link to both your Netlify deployment and your GitHub repo.
- 
-## Level 2 Process (optional)
+## Contributing
 
-1.	You can try adding a sort, filter, or search to the blog posts page allowing users to find the blog post more easily that they’re looking for. 
-2.	Post the data from the contact form to WordPress so you have the details saved.
-3.	Allow users to submit comments on a blog post, and post this data to WordPress
-
+The project is not open to contributions, however you can feel free to fork the repo in order to make your own version of it.
